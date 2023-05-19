@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.DesktopSetting.EditServicePage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="EditServicePage">
+    
+    <Grid >
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ImageButton Grid.Column="0" Grid.Row="0" Margin="0,10"
+                     BackgroundColor="Transparent"
+                     Source="back.png" Clicked="OnBack"
+                         
+                     WidthRequest="30" HeightRequest="30"
+                     HorizontalOptions="Start"/>
+           
+            <Grid VerticalOptions="Center" Grid.Column="0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Id" Grid.Column="0"></Label>
+                <Label Text="Назва" Grid.Column="1"></Label>
+                <Label Text="Тип" Grid.Column="2"></Label>
+                <Label Text="Ціна" Grid.Column="3"></Label>
+                <Label Text="Процент" Grid.Column="4"></Label>
+            </Grid>
+            <ActivityIndicator x:Name="AI" Grid.Column="0" Grid.Row="2" IsRunning="{Binding IsBusy}"></ActivityIndicator>
+            <ScrollView Grid.Column="0" Grid.Row="2">
+
+                <CollectionView 
+                    SelectionMode="Single" 
+                                
+                                SelectionChangedCommand="{Binding SelectionChanged}"
+                                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                                Grid.Column="0" 
+                                Grid.Row="2" 
+                             
+                            ItemsSource="{Binding Services}"
+                            x:Name="DataService">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" Grid.Column="0"></Label>
+                                <Label Text="{Binding Name}" Grid.Column="1"></Label>
+                                <Label Text="{Binding Type}" Grid.Column="2"></Label>
+                                <Label Text="{Binding Price}" Grid.Column="3"></Label>
+                                <Label Text="{Binding Procent}" Grid.Column="4"></Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+            </ScrollView>
+            <Border Grid.Column="0" Grid.Row="2"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="10"
+                    StrokeThickness="0"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 25,25,25,25"
+                    WidthRequest="50"
+                    HeightRequest="50">
+                <Button Text="+" FontSize="30" Clicked="OnAddService" BackgroundColor="Transparent"></Button>
+            </Border>
+        </Grid>
+        
+        
+        <Border Margin="10" 
+                StrokeThickness="1"
+                Stroke="#548AFE"
+                Grid.Column="1"
+                StrokeShape="RoundRectangle 10,10,10,10">
+           
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="Назва" Grid.Row="0" Grid.Column="0"></Label>
+                <Label HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="Тип" Grid.Row="1" Grid.Column="0"></Label>
+                <Label HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="Ціна" Grid.Row="2" Grid.Column="0"></Label>
+                <Label VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="Процент працівника" Grid.Row="3" Grid.Column="0"></Label>
+
+                <Entry HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="{Binding ThisName}" Grid.Row="0" Grid.Column="1"></Entry>
+                <Entry HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="{Binding ThisType}" Grid.Row="1" Grid.Column="2"></Entry>
+                <Entry HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="{Binding ThisPrice}" Grid.Row="2" Grid.Column="1"></Entry>
+                <Entry HorizontalOptions="Center" VerticalOptions="Center"
+                       Text="{Binding ThisProcent}" Grid.Row="3" Grid.Column="1"></Entry>
+                <Border 
+                    Grid.Column="0" Grid.Row="5"
+                    Margin="10" 
+                    StrokeThickness="1"
+                    Stroke="#FA6D6D"
+                    StrokeShape="RoundRectangle 10,10,10,10">
+                    <Button 
+                        TextColor="#FA6D6D" 
+                        Text="Видалити"
+                        BackgroundColor="Transparent"
+                        Command="{Binding DeleteService}">
+                    </Button>
+                </Border>
+                <Label HorizontalOptions="Center" Grid.Column="0" Grid.Row="5" Text="{Binding StatusDel}" TextColor="#FA6D6D"/>
+                <Border 
+                    Grid.Column="1" Grid.Row="5"
+                    Margin="10" 
+                    StrokeThickness="1"
+                    Stroke="#4ED16B"
+                    
+                    StrokeShape="RoundRectangle 10,10,10,10">
+                    
+                    <Button
+                        TextColor="#4ED16B"
+                        Text="Редагувати"
+                        BackgroundColor="Transparent"
+                        Command="{Binding EditService}"
+                        >
+                        
+                    </Button>
+                </Border>
+                <Label HorizontalOptions="Center" Grid.Column="1" Grid.Row="5" Text="{Binding StatusEdit}" TextColor="#FA6D6D"/>
+
+            </Grid>
+
+        </Border>
+    </Grid>
+</ContentPage>

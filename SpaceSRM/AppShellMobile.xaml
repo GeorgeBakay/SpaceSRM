@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="SpaceSRM.AppShellMobile"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SpaceSRM"
+    BackgroundColor="#0a0a0a"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False"
+   
+    >
+    
+   
+
+    <TabBar>
+        <Tab Title="Запис" Icon="record">
+            <ShellContent  ContentTemplate="{DataTemplate local:Views.Records}" />
+        </Tab>
+        <Tab Title="Статистика" Icon="statistic">
+
+            <ShellContent  ContentTemplate="{DataTemplate local:Views.Statistic}" />
+        </Tab>
+        <Tab Icon="report" Title="Звіт">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Report}" />
+        </Tab>
+        <Tab Icon="costs" Title="Календар">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Costs}" />
+        </Tab>
+        <Tab Icon="setting" Title="Налаштування">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Settings}" />
+        </Tab>
+    </TabBar>
+
+
+    
+
+
+</Shell>
+
+    

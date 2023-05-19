@@ -1,0 +1,43 @@
+﻿using CommunityToolkit.Maui;
+using Microsoft.Maui.LifecycleEvents;
+using SimpleToolkit.Core;
+using SimpleToolkit.SimpleShell;
+using SpaceSRM.Date.Interface;
+using SpaceSRM.Date.Repository;
+using SpaceSRM.ViewModels;
+
+namespace SpaceSRM;
+
+public static class MauiProgram
+{
+	//Реєстрація сервісу для Http Підключення
+    public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<IHttpClientSend,HttpClientRepository>();
+		return mauiAppBuilder;
+    
+    }
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
+			.RegisterAppServices()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
+		builder.Services.AddTransient<EditServiceViewModel>();
+		builder.Services.AddTransient<EditClientViewModel>();
+		builder.Services.AddTransient<EditSetServiceViewModel>();
+		builder.Services.AddTransient<EditEmployerViewModel>();
+		builder.Services.AddTransient<RecordsViewModel>();
+
+
+
+		return builder.Build();
+	}
+}
+

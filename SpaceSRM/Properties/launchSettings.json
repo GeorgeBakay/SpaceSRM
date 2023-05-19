@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "Windows Machine": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+  //"http": {
+  //  "commandName": "Project",
+  //  "dotnetRunMessages": true,
+  //  "launchBrowser": true,
+  //  "launchUrl": "api",
+  //  "applicationUrl": "http://localhost:7173",
+  //  "environmentVariables": {
+  //    "ASPNETCORE_ENVIRONMENT": "Development"
+  //  }
+  //}
+}

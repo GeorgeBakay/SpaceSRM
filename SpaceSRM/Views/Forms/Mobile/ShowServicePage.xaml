@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.Mobile.ShowServicePage"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="ShowServicePage">
+             
+    <Grid x:Name="Grid">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ImageButton Grid.Column="0" Grid.Row="0" Margin="10"
+                     BackgroundColor="Transparent"
+                     Source="back.png" Clicked="OnBack"
+                         
+                     WidthRequest="30" HeightRequest="30"
+                     HorizontalOptions="Start"/>
+
+            <Grid Margin="10 ,0, 10, 0" VerticalOptions="Center" Grid.Column="0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalTextAlignment="Center" FontSize="13" Text="Id" Grid.Column="0"></Label>
+                <Label HorizontalTextAlignment="Center" FontSize="13" Text="Назва" Grid.Column="1"></Label>
+                <Label HorizontalTextAlignment="Center" FontSize="13" Text="Тип" Grid.Column="2"></Label>
+                <Label HorizontalTextAlignment="Center" FontSize="13" Text="Ціна" Grid.Column="3"></Label>
+                <Label HorizontalTextAlignment="Center" FontSize="13" Text="Процент" Grid.Column="4"></Label>
+            </Grid>
+            <ActivityIndicator Color="#25B6BC" WidthRequest="80" x:Name="AI"  Grid.Row="2" IsRunning="{Binding IsBusy}"></ActivityIndicator>
+            <ScrollView  Margin="10 ,0, 10, 0"  Grid.Row="2">
+
+                <CollectionView SelectionMode="Single" 
+                                
+                                
+                                SelectionChanged="DataService_SelectionChanged"
+                                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                                
+                                Grid.Row="2" 
+                             
+                            ItemsSource="{Binding Services}"
+                            x:Name="DataService">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Margin="0,5"
+                                BackgroundColor="Transparent"
+                                Stroke="#548AFE"
+                                 StrokeShape="RoundRectangle 5"
+                                >
+                                <Grid Margin="0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Id}" Grid.Column="0"></Label>
+                                    <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Name}" Grid.Column="1"></Label>
+                                    <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Type}" Grid.Column="2"></Label>
+                                    <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Price}" Grid.Column="3"></Label>
+                                    <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Procent}" Grid.Column="4"></Label>
+                                </Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Border>
+                            
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+            </ScrollView>
+            <Border Grid.Column="0" Grid.Row="2"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="20"
+                    StrokeThickness="0"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 40,40,40,20"
+                    WidthRequest="80"
+                    HeightRequest="80">
+                <Button Text="+" FontSize="40" Clicked="OnAddService" BackgroundColor="Transparent">
+                </Button>
+            </Border>
+        </Grid>
+
+    </Grid>
+</ContentPage>
