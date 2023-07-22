@@ -102,7 +102,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:Views.Statistic}" />
     </FlyoutItem>
     <FlyoutItem Icon="report.png" Title="Звіт" >
-        <ShellContent  ContentTemplate="{DataTemplate local:Views.Report}" />
+        <ShellContent  ContentTemplate="{DataTemplate local:Views.Calendar}" />
     </FlyoutItem>
     <FlyoutItem Icon="costs.png" Title="Витрати" >
         <ShellContent ContentTemplate="{DataTemplate local:Views.Costs}" />

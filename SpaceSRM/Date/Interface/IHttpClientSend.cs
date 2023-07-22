@@ -1,4 +1,6 @@
-﻿using SpaceSRM.Models;
+﻿
+using SpaceSRM.Date.Models;
+using SpaceSRM.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +15,14 @@ namespace SpaceSRM.Date.Interface
         public Task<string> AddService(Service service);
         public Task<string> DeleteService(int id);
         public Task<List<Service>> GetServicesQuick();
+        public Task<List<Service>> GetServices();
         public Task<string> EditService(Service service);
 
         //Запроси клієнт 
         public Task<string> AddClient(Client client);
         public Task<string> DeleteClient(int id);
         public Task<List<Client>> GetClientsQuick();
+        public Task<List<Client>> GetClients();
         public Task<string> EditClient(Client client);
 
         //Запроси набір послуг
@@ -31,18 +35,35 @@ namespace SpaceSRM.Date.Interface
         public Task<string> AddEmployer(Employer employer);
         public Task<string> DeleteEmployer(int id);
         public Task<List<Employer>> GetEmployersQuick();
+        public Task<List<Employer>> GetEmployers();
         public Task<string> EditEmployer(Employer employer);
 
 
         //Методи для роботи з записами
 
         public Task<List<Record>> GetRecordsQuick();
+        public Task<List<Record>> GetRecords();
         public Task<string> AddRecord(Record record);
         public Task<string> AddPhoto(int Id, Photo photo);
         public Task<Record> GetRecord(int Id);
+        public Task<List<Work>> GetWorks();
         public Task<string> DeletePhoto(int Id);
         public Task<string> DeleteRecord(int Id);
         public Task<string> EditRecord(Record record);
         public Task<Photo> GetPhoto(int Id, int NumPhoto);
+
+        //Методи взаємодії з витратами
+        public Task<string> AddCost(Cost cost);
+        public Task<List<Cost>> GetCosts();
+        public Task<string> EditCost(Cost cost);
+        public Task<string> DeleteCost(int Id);
+        //Зарплати 
+        public Task<string> AddSalary(Salary salary);
+        public Task<string> DeleteSalary(int Id);
+        public Task<string> EditSalary(Salary salary);
+        public Task<List<Salary>> GetSalarysEmployer(int employerId);
+        //Логінізація
+        public Task<bool> Login(User user);
+
     }
 }

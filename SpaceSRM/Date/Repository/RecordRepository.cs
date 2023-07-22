@@ -52,6 +52,16 @@ namespace SpaceSRM.Date.Repository
             return response;
         }
 
+        public async Task<List<Record>> GetRecords()
+        {
+            List<Record>? records = await _httpClientSend.GetRecords();
+            return records;
+        }
+        public async Task<List<Work>> GetWorks()
+        {
+            List<Work>? records = await _httpClientSend.GetWorks();
+            return records;
+        }
         public async Task<List<Record>> GetRecordsQuick()
         {
             try
@@ -59,32 +69,30 @@ namespace SpaceSRM.Date.Repository
                 List<Record>? records = await _httpClientSend.GetRecordsQuick();
                 if(records != null)
                 {
-                    List<Record> result = new List<Record>();
+                    
                     foreach (Record record in records)
                     {
-                        if(record.Status == Status.End)
+                        switch(record.Status)
                         {
-                            record.ColorOfStatus = Color.FromArgb("#4ED16B");
-                            record.StatusString = "Завершено";
+                            case Status.End:
+                                record.ColorOfStatus = Color.FromArgb("#4ED16B");
+                                record.StatusString = "Завершено";
+                                break;
+                            case Status.Work:
+                                record.ColorOfStatus = Color.FromArgb("#CFD14E");
+                                record.StatusString = "Робота";
+                                break;
+                            case Status.Abolition:
+                                record.ColorOfStatus = Color.FromArgb("#FA6D6D");
+                                record.StatusString = "Відмова";
+                                break;
+                            case Status.Wait:
+                                record.ColorOfStatus = Color.FromArgb("#D1764E");
+                                record.StatusString = "Запис";
+                                break;
                         }
-                        else if(record.Status == Status.Work)
-                        {
-                            record.ColorOfStatus = Color.FromArgb("#CFD14E") ;
-                            record.StatusString = "Робота";
-                        }
-                        else if(record.Status == Status.Abolition)
-                        {
-                            record.ColorOfStatus = Color.FromArgb("#FA6D6D");
-                            record.StatusString = "Відмова";
-                        }
-                        else
-                        {
-                            record.ColorOfStatus = Color.FromArgb("#D1764E");
-                            record.StatusString = "Запис";
-                        }
-                        result.Add(record);
                     }
-                    return result;
+                    return records;
                 }
                 return new List<Record>();
 

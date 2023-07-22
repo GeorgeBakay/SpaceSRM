@@ -21,6 +21,7 @@ namespace SpaceSRM.ViewModels
         ObservableCollection<Client> clients;
         
         bool _isBusy = true;
+        bool _isBusyEdit = false;
         public Client SelectedItem { get; set; }
         string thisName = "";
         string thisSurName = "";
@@ -101,6 +102,18 @@ namespace SpaceSRM.ViewModels
                 }
             }
         }
+        public bool IsBusyEdit
+        {
+            get => _isBusyEdit;
+            set
+            {
+                if (_isBusyEdit != value)
+                {
+                    _isBusyEdit = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public bool IsBusy
         {
             get => _isBusy;
@@ -141,6 +154,7 @@ namespace SpaceSRM.ViewModels
         });
 
         public ICommand DeleteClient => new Command(async () => {
+            IsBusyEdit = true;
             bool check = await Application.Current.MainPage.DisplayAlert("Підтвердження", $"Ви точно хочете видалити {ThisName}?", "так", "ні");
             if (!check)
             {
@@ -159,9 +173,11 @@ namespace SpaceSRM.ViewModels
             {
                 StatusDel = response;
             }
+            IsBusyEdit = false;
         });
         public ICommand EditClient => new Command(async () => {
-            {
+            
+                IsBusyEdit = true;
                 if (ThisName == "" || ThisSurName == "" || ThisPhone == "")
                 {
                     StatusEdit = "Некоректні значення";
@@ -188,7 +204,8 @@ namespace SpaceSRM.ViewModels
                 {
                     StatusEdit = response;
                 }
-            }
+            
+            IsBusyEdit = true;
         });
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.LoginPage"
+             Title="LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout  VerticalOptions="CenterAndExpand">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+           
+            <Grid>
+                <Border   
+                    ZIndex="99"
+                    Opacity="0"
+                    x:Name="round1"
+                    Margin="0"   
+                    TranslationX="100"
+                    TranslationY="-200"
+                    StrokeThickness="1"
+                    Stroke="#4ED16B"
+                    BackgroundColor="#4ED16B"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    StrokeShape="RoundRectangle 40,40,40,40">
+
+                </Border>
+                <Border  
+                    Opacity="0"
+                    x:Name="round2"
+                    Margin="0"   
+                    TranslationX="-100"
+                    TranslationY="-300"
+                    StrokeThickness="1"
+                    Stroke="#172242"
+                    BackgroundColor="#172242"
+                    HeightRequest="150"
+                    WidthRequest="150"
+                    StrokeShape="RoundRectangle 75,75,75,75">
+
+                </Border>
+                <Border    
+                    Opacity="0"
+                    Margin="0"   
+                    x:Name="round3"
+                    TranslationX="120"
+                    TranslationY="200"
+                    StrokeThickness="1"
+                    Stroke="#172242"
+                    BackgroundColor="#172242"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    StrokeShape="RoundRectangle 60,60,60,60">
+
+                </Border>
+                <Border     
+                    Opacity="0"
+                    x:Name="round4"
+                    Margin="0"   
+                    TranslationX="-50"
+                    TranslationY="0"
+                    StrokeThickness="1"
+                    Stroke="#172242"
+                    BackgroundColor="#172242"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    StrokeShape="RoundRectangle 150,150,150,150">
+
+                </Border>
+                <Border           
+                    Opacity="0"
+                    x:Name="round5"
+                    Margin="0"   
+                    TranslationX="0"
+                    TranslationY="320"
+                    StrokeThickness="1"
+                    Stroke="#172242"
+                    BackgroundColor="#172242"
+                    HeightRequest="140"
+                    WidthRequest="140"
+                    StrokeShape="RoundRectangle 70,70,70,70">
+
+                </Border>
+            </Grid>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    
+                </Grid.RowDefinitions>
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="End" Text="Логін" FontSize="15" Grid.Row="0" Grid.Column="1"/>
+                <Border 
+                    Grid.Row="1" Grid.Column="1"
+                    Margin="0" 
+                    BackgroundColor="Transparent"
+                    StrokeThickness="2"
+                    Stroke="#548AFE"
+                    Padding="0"
+                    StrokeShape="RoundRectangle 15,15,15,15">
+                    <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                            FontSize="22" TextColor="White" x:Name="User"/>
+                </Border>
+                
+
+                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="End" Text="Пароль" FontSize="15" Grid.Row="2" Grid.Column="1"/>
+                <Border 
+                    Grid.Row="3" Grid.Column="1"
+                    Margin="0" 
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    StrokeThickness="2"
+                    Stroke="#548AFE"
+                   
+                    StrokeShape="RoundRectangle 15,15,15,15">
+                    <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22" IsPassword="True"  TextColor="White" x:Name="Password"/>
+                </Border>
+                
+                
+                
+                <Border 
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Margin="40,0" 
+                    
+                    StrokeThickness="1"
+                    Stroke="#4ED16B"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 15,15,15,15">
+
+                    <Button
+                        TextColor="Black"
+                        FontSize="20"
+                        Text="Увійти"
+                        BackgroundColor="Transparent"
+                        Clicked="Login_Clicked"
+                        >
+
+                    </Button>
+                </Border>
+            </Grid>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

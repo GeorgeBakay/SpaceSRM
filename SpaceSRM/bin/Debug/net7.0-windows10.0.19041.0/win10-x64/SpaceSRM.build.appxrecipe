@@ -1447,6 +1447,21 @@
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\communitytoolkit.maui.core\1.3.0\lib\net6.0-windows10.0.19041\CommunityToolkit.Maui.Core.dll">
       <PackagePath>CommunityToolkit.Maui.Core.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\harfbuzzsharp\2.8.2.3\lib\net6.0\HarfBuzzSharp.dll">
+      <PackagePath>HarfBuzzSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\livechartscore\2.0.0-beta.710\lib\net6.0\LiveChartsCore.dll">
+      <PackagePath>LiveChartsCore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\livechartscore.skiasharpview\2.0.0-beta.710\lib\net6.0\LiveChartsCore.SkiaSharpView.dll">
+      <PackagePath>LiveChartsCore.SkiaSharpView.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\livechartscore.skiasharpview.maui\2.0.0-beta.710\lib\net6.0\LiveChartsCore.SkiaSharpView.Maui.dll">
+      <PackagePath>LiveChartsCore.SkiaSharpView.Maui.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\livechartscore.skiasharpview.winui\2.0.0-beta.710\lib\net6.0-windows10.0.19041\LiveChartsCore.SkiaSharpView.WinUI.dll">
+      <PackagePath>LiveChartsCore.SkiaSharpView.WinUI.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\microsoft.bcl.asyncinterfaces\1.1.1\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll">
       <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
     </AppxPackagedFile>
@@ -1573,6 +1588,36 @@
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\simpletoolkit.simpleshell\2.1.0\lib\net7.0-windows10.0.19041\SimpleToolkit.SimpleShell.dll">
       <PackagePath>SimpleToolkit.SimpleShell.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp\2.88.3\lib\net6.0\SkiaSharp.dll">
+      <PackagePath>SkiaSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.harfbuzz\2.88.3\lib\net6.0\SkiaSharp.HarfBuzz.dll">
+      <PackagePath>SkiaSharp.HarfBuzz.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.views.maui.controls\2.88.3\lib\net6.0-windows10.0.18362.0\SkiaSharp.Views.Maui.Controls.dll">
+      <PackagePath>SkiaSharp.Views.Maui.Controls.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.views.maui.controls.compatibility\2.88.3\lib\net6.0-windows10.0.18362.0\SkiaSharp.Views.Maui.Controls.Compatibility.dll">
+      <PackagePath>SkiaSharp.Views.Maui.Controls.Compatibility.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.views.maui.core\2.88.3\lib\net6.0-windows10.0.18362.0\SkiaSharp.Views.Maui.Core.dll">
+      <PackagePath>SkiaSharp.Views.Maui.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.views.winui\2.88.3\lib\net6.0-windows10.0.19041.0\SkiaSharp.Views.Windows.dll">
+      <PackagePath>SkiaSharp.Views.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\syncfusion.licensing\22.1.37\lib\net7.0\Syncfusion.Licensing.dll">
+      <PackagePath>Syncfusion.Licensing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\syncfusion.maui.calendar\22.1.37\lib\net7.0-windows10.0.19041.0\Syncfusion.Maui.Calendar.dll">
+      <PackagePath>Syncfusion.Maui.Calendar.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\syncfusion.maui.core\22.1.37\lib\net7.0-windows10.0.19041.0\Syncfusion.Maui.Core.dll">
+      <PackagePath>Syncfusion.Maui.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\syncfusion.maui.scheduler\22.1.37\lib\net7.0-windows10.0.19041.0\Syncfusion.Maui.Scheduler.dll">
+      <PackagePath>Syncfusion.Maui.Scheduler.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\system.identitymodel.tokens.jwt\6.24.0\lib\net6.0\System.IdentityModel.Tokens.Jwt.dll">
       <PackagePath>System.IdentityModel.Tokens.Jwt.dll</PackagePath>
     </AppxPackagedFile>
@@ -1581,6 +1626,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\system.runtime.caching\6.0.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll">
       <PackagePath>System.Runtime.Caching.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\syncfusion.maui.scheduler\22.1.37\lib\net7.0-windows10.0.19041.0\en-US\Syncfusion.Maui.Scheduler.resources.dll">
+      <PackagePath>en-US\Syncfusion.Maui.Scheduler.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\harfbuzzsharp.nativeassets.win32\2.8.2.3\runtimes\win-x64\native\libHarfBuzzSharp.dll">
+      <PackagePath>libHarfBuzzSharp.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\microsoft.data.sqlclient.sni.runtime\5.1.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll">
       <PackagePath>Microsoft.Data.SqlClient.SNI.dll</PackagePath>
@@ -1594,8 +1645,14 @@
     <AppxPackagedFile Include="C:\Users\George\.nuget\packages\microsoft.windowsappsdk\1.2.221109.1\runtimes\win10-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\skiasharp.nativeassets.win32\2.88.3\runtimes\win-x64\native\libSkiaSharp.dll">
+      <PackagePath>libSkiaSharp.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\SpaceSRM.deps.json">
       <PackagePath>SpaceSRM.deps.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\.nuget\packages\livechartscore.skiasharpview.winui\2.0.0-beta.710\lib\net6.0-windows10.0.19041\LiveChartsCore.SkiaSharpView.WinUI.pri">
+      <PackagePath>LiveChartsCore.SkiaSharpView.WinUI.pri</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.52\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
@@ -1771,6 +1828,21 @@
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\back.scale-100.png">
       <PackagePath>back.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\clients.scale-100.png">
+      <PackagePath>clients.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\clients.scale-125.png">
+      <PackagePath>clients.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\clients.scale-150.png">
+      <PackagePath>clients.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\clients.scale-200.png">
+      <PackagePath>clients.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\clients.scale-400.png">
+      <PackagePath>clients.scale-400.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs.ico">
       <PackagePath>costs.ico</PackagePath>
     </AppxPackagedFile>
@@ -1788,6 +1860,21 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs.scale-400.png">
       <PackagePath>costs.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs2.scale-100.png">
+      <PackagePath>costs2.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs2.scale-125.png">
+      <PackagePath>costs2.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs2.scale-150.png">
+      <PackagePath>costs2.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs2.scale-200.png">
+      <PackagePath>costs2.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costs2.scale-400.png">
+      <PackagePath>costs2.scale-400.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costsLargeTile.scale-100.png">
       <PackagePath>costsLargeTile.scale-100.png</PackagePath>
@@ -1924,6 +2011,21 @@
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\costsWideTile.scale-400.png">
       <PackagePath>costsWideTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\employers.scale-100.png">
+      <PackagePath>employers.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\employers.scale-125.png">
+      <PackagePath>employers.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\employers.scale-150.png">
+      <PackagePath>employers.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\employers.scale-200.png">
+      <PackagePath>employers.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\employers.scale-400.png">
+      <PackagePath>employers.scale-400.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo.scale-100.png">
       <PackagePath>logo.scale-100.png</PackagePath>
     </AppxPackagedFile>
@@ -1941,6 +2043,21 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record.scale-400.png">
       <PackagePath>record.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record2.scale-100.png">
+      <PackagePath>record2.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record2.scale-125.png">
+      <PackagePath>record2.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record2.scale-150.png">
+      <PackagePath>record2.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record2.scale-200.png">
+      <PackagePath>record2.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\record2.scale-400.png">
+      <PackagePath>record2.scale-400.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\report.ico">
       <PackagePath>report.ico</PackagePath>
@@ -2094,6 +2211,21 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\reportWideTile.scale-400.png">
       <PackagePath>reportWideTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\services.scale-100.png">
+      <PackagePath>services.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\services.scale-125.png">
+      <PackagePath>services.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\services.scale-150.png">
+      <PackagePath>services.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\services.scale-200.png">
+      <PackagePath>services.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\services.scale-400.png">
+      <PackagePath>services.scale-400.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\George\source\repos\SpaceSRM\SpaceSRM\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\setting.scale-100.png">
       <PackagePath>setting.scale-100.png</PackagePath>

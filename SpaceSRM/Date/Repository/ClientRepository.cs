@@ -48,5 +48,10 @@ namespace SpaceSRM.Date.Repository
             List<Client> clients = await _httpClientSend.GetClientsQuick();
             return clients;
         }
+        public async Task<List<Client>> GetClients()
+        {
+            List<Client> clients = await _httpClientSend.GetClients();
+            return clients;
+        }
     }
 }

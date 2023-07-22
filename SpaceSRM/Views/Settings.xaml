@@ -32,7 +32,7 @@
             <Border
                 StrokeThickness="0"
                 Grid.Row="0"
-                BackgroundColor="#0E172A"
+                BackgroundColor="#1a1919"
                 Margin="5"
                 StrokeShape="RoundRectangle 10"
                 >
@@ -41,12 +41,12 @@
                     Text="Клієнти" 
                     FontSize="20"
                     BackgroundColor="Transparent"
-                    TextColor="White">
+                    TextColor="#548AFE">
 
                 </Button>
             </Border>
             <Border 
-                BackgroundColor="#0E172A"
+                BackgroundColor="#1a1919"
                 StrokeThickness="0"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -58,11 +58,11 @@
                     Text="Послуги"
                     FontSize="20"
                     BackgroundColor="Transparent"
-                    TextColor="White">
+                    TextColor="#548AFE">
 
                 </Button>
             </Border>
-        <Border BackgroundColor="#0E172A"
+        <Border BackgroundColor="#1a1919"
                 StrokeThickness="0"
                 Grid.Row="1"
                 Grid.Column="0"
@@ -75,7 +75,7 @@
                     Text="Набір послуг" 
                     FontSize="20"
                     BackgroundColor="Transparent"
-                    TextColor="White"
+                    TextColor="#548AFE"
                     Clicked="OnEditSetService">
 
                 </Button>
@@ -84,7 +84,7 @@
                 StrokeThickness="0"
                 Grid.Row="1"
                 Grid.Column="1"
-                BackgroundColor="#0E172A"
+                BackgroundColor="#1a1919"
                 Margin="5"
                 StrokeShape="RoundRectangle 10"
                 >
@@ -93,7 +93,7 @@
                 Text="Працівники"
                 FontSize="20"
                 BackgroundColor="Transparent"
-                TextColor="White"
+                TextColor="#548AFE"
                 Clicked="OnEditEmployer">
 
                 </Button>

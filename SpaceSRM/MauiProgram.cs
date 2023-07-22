@@ -5,7 +5,12 @@ using SimpleToolkit.SimpleShell;
 using SpaceSRM.Date.Interface;
 using SpaceSRM.Date.Repository;
 using SpaceSRM.ViewModels;
-
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 namespace SpaceSRM;
 
 public static class MauiProgram
@@ -20,8 +25,9 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
+        builder
+            .UseSkiaSharp(true)
+            .UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.RegisterAppServices()
 			.ConfigureFonts(fonts =>
@@ -29,15 +35,19 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		builder.Services.AddTransient<EditServiceViewModel>();
-		builder.Services.AddTransient<EditClientViewModel>();
-		builder.Services.AddTransient<EditSetServiceViewModel>();
-		builder.Services.AddTransient<EditEmployerViewModel>();
-		builder.Services.AddTransient<RecordsViewModel>();
+		builder.Services.AddSingleton<EditServiceViewModel>();
+		builder.Services.AddSingleton<EditClientViewModel>();
+		builder.Services.AddSingleton<EditSetServiceViewModel>();
+		builder.Services.AddSingleton<EditEmployerViewModel>();
+		builder.Services.AddSingleton<RecordsViewModel>();
+        builder.Services.AddSingleton<CostViewModel>();
+        builder.Services.AddSingleton<StatisticClientViewModel>();
+        builder.Services.AddSingleton<StatisticEmployerViewModel>();
+        builder.Services.AddSingleton<StatisticViewModel>();
 
 
 
-		return builder.Build();
+        return builder.Build();
 	}
 }
 

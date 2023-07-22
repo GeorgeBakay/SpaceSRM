@@ -3,9 +3,9 @@ using SpaceSRM.Date.Models;
 using SpaceSRM.Date.Repository;
 using SpaceSRM.Models;
 using SpaceSRM.ViewModels;
-using System.Reflection.Metadata.Ecma335;
 
 namespace SpaceSRM.Views.Forms.DesktopSetting;
+
 
 public partial class AddRecordForm : ContentPage
 {
@@ -14,12 +14,13 @@ public partial class AddRecordForm : ContentPage
 
     private bool IsFirst = true;
     private bool isInitialized = false;
-
+    private bool IsAddClient = true;
+    private bool IsEditWork = false; 
     public AddRecordForm()
     {
        
         BindingContext = _vm;
-        
+
     }
     
     //Loading add record page 
@@ -29,20 +30,26 @@ public partial class AddRecordForm : ContentPage
     protected override async void OnAppearing()
     {
         
+        await Task.Delay(500);
         if (IsFirst)
         {
-            if (!isInitialized)
-            {
-                await Task.Delay(400);
-                InitializeComponent();
-                isInitialized = true;
-            }
-            
-            await Task.Delay(300);
+            InitializeComponent();
+            await _vm.LoadingDataEmployers();
+            await _vm.LoadingDataServices();
+        }
+        if (IsAddClient)
+        {       
             await _vm.LoadingDataClients();
-            IsFirst = false;
+            await _vm.VisualDataClients();
+            IsAddClient = false;
         }
         
+        if (IsEditWork)
+        {
+
+        }
+        _vm.VisualDataWorks();
+        IsFirst = false;
         List<Work> listWork = _vm.Works.ToList();
         _vm.AddRecord.Sum = 0;
         _vm.Sum = 0;
@@ -53,11 +60,16 @@ public partial class AddRecordForm : ContentPage
             _vm.AddRecord.Sum += y;
             _vm.Sum += y;
         }
-
-
         base.OnAppearing();
+
     }
-    
+    protected override async void OnDisappearing()
+    {
+        
+        base.OnDisappearing();
+        _vm.ClearVisualWorks();
+        
+    }
     void OnChangeSeachClient(object sender, EventArgs e)
     {
         SearchBar SB = (SearchBar)sender;
@@ -66,7 +78,8 @@ public partial class AddRecordForm : ContentPage
     }
     private async void OnAddClient(object sender, EventArgs e)
     {
-        IsFirst = true;
+        IsAddClient = true;
+        _vm.ClearVisualClients();
         Forms.DesktopSetting.AddClientForm page = new Forms.DesktopSetting.AddClientForm();
         await Navigation.PushAsync(page);
     }
@@ -357,17 +370,8 @@ public partial class AddRecordForm : ContentPage
     {
         if (e.CurrentSelection.FirstOrDefault() is Work current)
         {
-            bool answer = await DisplayAlert("SpaceSRM інформує",
-                "Ви точно хочете видалити цю роботу",
-                "Ні", "Так");
-            if (!answer)
-            {
-                _vm.AddRecord.Sum -= current.Price;
-                _vm.Sum -= current.Price;
-                _vm.AddRecord.Works.Remove(current);
-                _vm.Works.Remove(current);
-            }
-            
+            Forms.Mobile.EditWorkForm page = new Forms.Mobile.EditWorkForm(_vm,current);
+            await Navigation.PushAsync(page);
             CollectionWorks.SelectedItem = null;
 
         }
@@ -377,11 +381,13 @@ public partial class AddRecordForm : ContentPage
     {
         
         Record thisRecord =  _vm.AddRecord;
-        if(thisRecord.Works == null || thisRecord.Works.Count == 0)
+        List<Work> worksToRecord = _vm.WorksData;
+        if (worksToRecord == null || worksToRecord.Count == 0)
         {
             Result.TextColor = Color.FromArgb("#FA6D6D");
             Result.Text = "Ви не вибрали перелік робіт";
             return;
+            
         }
         else if(DiscountError.Text != "")
         {
@@ -400,37 +406,42 @@ public partial class AddRecordForm : ContentPage
             LoadingAdd.IsRunning = true;
             Result.TextColor = Color.FromArgb("#4ED16B");
             Result.Text = "Загрузка запису...";
+
             Record recordOutPhoto = new Record()
             {
                 ClientId = thisRecord.ClientId,
                 Client = thisRecord.Client,
-                Works = thisRecord.Works,
+                Works = worksToRecord,
                 BodySize = thisRecord.BodySize,
                 BodyType = thisRecord.BodyType,
                 Brand = thisRecord.Brand,
                 NumberOfCar = thisRecord.NumberOfCar,
                 DateStart = thisRecord.DateStart,
+                GasCount = thisRecord.GasCount,
                 DateEnd = thisRecord.DateEnd,
                 Sum = thisRecord.Sum,
                 Discount = thisRecord.Discount,
-                Status = thisRecord.Status
+                Status = thisRecord.Status,
+                SendMessage = thisRecord.SendMessage,
             };
+            
+          
             int RecordId;
             List<Photo> photosToSend = thisRecord.Photos.ToList();
             string response = await recordConnection.AddRecord(recordOutPhoto);
             
             if (int.TryParse(response,out RecordId))
             {
-                Result.Text = "успішно" + Result.Text;
+                Result.Text = Result.Text + "успішно\n";
                 Result.Text = "\nЗагрузка фото\n" + Result.Text;
                 int i = 1;
-                foreach(Photo photo in photosToSend)
+                foreach (Photo photo in photosToSend)
                 {
                     Result.Text = $"Загрузка {i}го фото...." + Result.Text;
                     response = await recordConnection.AddPhoto(RecordId, photo);
-                    if(response == "ok")
+                    if (response == "ok")
                     {
-                        Result.Text = "Успішно додано\n" + Result.Text ;
+                        Result.Text = Result.Text + "Успішно додано";
                     }
                     else
                     {
@@ -439,7 +450,7 @@ public partial class AddRecordForm : ContentPage
                     }
                     i++;
                 }
-                Result.Text =  "Данні успішно обробленні" + Result.Text;
+                Result.Text = "Данні успішно обробленні\n" + Result.Text;
                 LoadingAdd.IsRunning = false;
             }
             else

@@ -16,6 +16,8 @@ namespace SpaceSRM.Models
         public Record Record { get; set; } = new Record();
         public int Price { get; set; }
         public int TruePrice { get; set; }
+        public string DescriptionCost { get; set; } = " ";
+        public int PriceCost { get; set; } = 0;
 
     }
 }

@@ -100,7 +100,7 @@
                     StrokeShape="RoundRectangle 40,40,40,20"
                     WidthRequest="80"
                     HeightRequest="80">
-            <Button Text="+" FontSize="40" Clicked="OnAddRecord" BackgroundColor="Transparent">
+            <Button Text="+" TextColor="White" FontSize="40" Clicked="OnAddRecord" BackgroundColor="Transparent">
             </Button>
         </Border>
     </Grid>

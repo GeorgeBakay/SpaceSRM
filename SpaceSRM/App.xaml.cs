@@ -1,16 +1,16 @@
-﻿using SpaceSRM.Views;
+﻿
+using SpaceSRM.Views;
 namespace SpaceSRM;
-
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class App : Application
 {
-	public App()
+  
+    public App()
 	{
+      
 		InitializeComponent();
+        MainPage = new NavigationPage(new LoginPage());
 
-#if ANDROID || IOS
-		MainPage = new AppShellMobile();
-#else
-		MainPage = new AppShellDesktop();
-#endif
     }
+  
 }

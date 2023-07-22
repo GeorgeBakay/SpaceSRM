@@ -11,31 +11,35 @@ public partial class EditRecordForm : ContentPage
     private readonly IRecord recordConnection = new RecordRepository();
 
     private bool IsFirst = true;
+    private bool IsAddClient = true;
     private bool isInitialized = false;
     public EditRecordForm(RecordsViewModel vm)
 	{
+        
         BindingContext = _vm = vm;
     }
     protected override async void OnAppearing()
     {
 
+        await Task.Delay(600);
+        if (IsAddClient)
+        {
+
+            await _vm.LoadingDataClients();
+            await _vm.VisualDataClients();
+            IsAddClient = false;
+        }
         if (IsFirst)
         {
-            if (!isInitialized)
-            {
-                await Task.Delay(450);
-                InitializeComponent();
-                isInitialized = true;
-            }
-
-            await Task.Delay(300);
-            await _vm.LoadingDataClients();
+            InitializeComponent();
+            await _vm.LoadingDataEmployers();
+            await _vm.LoadingDataServices();
             await _vm.LoadingRecord();
-            DiscountText.Text = _vm.AddRecord.Discount.ToString();
-            OnPropertyChanged(nameof(_vm.SelectClient));
-            IsFirst = false;
-        }
 
+        }
+        
+        _vm.VisualDataWorks();
+        IsFirst = false;
         List<Work> listWork = _vm.Works.ToList();
         _vm.AddRecord.Sum = 0;
         _vm.Sum = 0;
@@ -47,10 +51,15 @@ public partial class EditRecordForm : ContentPage
             _vm.Sum += y;
         }
 
-
         base.OnAppearing();
     }
-    
+    protected override async void OnDisappearing()
+    {
+
+        base.OnDisappearing();
+        _vm.ClearVisualWorks();
+
+    }
     void OnChangeSeachClient(object sender, EventArgs e)
     {
         SearchBar SB = (SearchBar)sender;
@@ -59,7 +68,8 @@ public partial class EditRecordForm : ContentPage
     }
     private async void OnAddClient(object sender, EventArgs e)
     {
-        IsFirst = true;
+        IsAddClient = true;
+        _vm.ClearVisualClients();
         Forms.DesktopSetting.AddClientForm page = new Forms.DesktopSetting.AddClientForm();
         await Navigation.PushAsync(page);
     }
@@ -351,29 +361,17 @@ public partial class EditRecordForm : ContentPage
     {
         if (e.CurrentSelection.FirstOrDefault() is Work current)
         {
-            bool answer = await DisplayAlert("SpaceSRM інформує",
-                "Ви точно хочете видалити цю роботу",
-                "Ні", "Так");
-            if (!answer)
-            {
-                _vm.AddRecord.Sum -= current.Price;
-                _vm.Sum -= current.Price;
-                _vm.AddRecord.Works.Remove(_vm.AddRecord.Works.Single(u => u.Id == current.Id 
-                && u.Price == current.Price 
-                && u.TruePrice == current.TruePrice 
-                && u.Service.Name == current.Service.Name
-                && u.Service.Type == current.Service.Type));
-                _vm.Works.Remove(current);
-            }
-
+            Forms.Mobile.EditWorkForm page = new Forms.Mobile.EditWorkForm(_vm, current);
+            await Navigation.PushAsync(page);
             CollectionWorks.SelectedItem = null;
 
         }
     }
 
+
     private async void EditClicked(object sender, EventArgs e)
     {
-
+        List<Work> worksToRecord = _vm.WorksData;
         Record thisRecord = _vm.AddRecord;
         if (thisRecord.Works == null || thisRecord.Works.Count == 0)
         {
@@ -403,7 +401,7 @@ public partial class EditRecordForm : ContentPage
                 Id = thisRecord.Id,
                 ClientId = thisRecord.ClientId,
                 Client = thisRecord.Client,
-                Works = thisRecord.Works,
+                Works = worksToRecord,
                 BodySize = thisRecord.BodySize,
                 BodyType = thisRecord.BodyType,
                 Brand = thisRecord.Brand,
@@ -412,24 +410,25 @@ public partial class EditRecordForm : ContentPage
                 DateEnd = thisRecord.DateEnd,
                 Sum = thisRecord.Sum,
                 Discount = thisRecord.Discount,
-                Status = thisRecord.Status
+                Status = thisRecord.Status,
+                GasCount= thisRecord.GasCount,
+                SendMessage = thisRecord.SendMessage,
             };
             int RecordId;
             List<Photo> photosToSend = thisRecord.Photos.ToList();
             string response = await recordConnection.EditRecord(recordOutPhoto);
-
-            if (int.TryParse(response, out RecordId))
-            {
-                Result.Text = "успішно\n" + Result.Text;
-                Result.Text = "Загрузка фото\n" + Result.Text;
+            int recordId = _vm.AddRecord.Id;
+           
+                Result.Text =  Result.Text + "успішно\n";
+                Result.Text = "\nЗагрузка фото\n" + Result.Text;
                 int i = 1;
                 foreach (Photo photo in photosToSend)
                 {
                     Result.Text = $"Загрузка {i}го фото...." + Result.Text;
-                    response = await recordConnection.AddPhoto(RecordId, photo);
+                    response = await recordConnection.AddPhoto(recordId, photo);
                     if (response == "ok")
                     {
-                        Result.Text = "Успішно додано\n" + Result.Text;
+                        Result.Text = Result.Text + "Успішно додано";
                     }
                     else
                     {
@@ -438,15 +437,8 @@ public partial class EditRecordForm : ContentPage
                     }
                     i++;
                 }
-                Result.Text = "Данні успішно обробленні" + Result.Text;
+                Result.Text = "Данні успішно обробленні\n" + Result.Text;
                 LoadingAdd.IsRunning = false;
-            }
-            else
-            {
-                Result.TextColor = Color.FromArgb("#FA6D6D");
-                Result.Text = response;
-                LoadingAdd.IsRunning = false;
-            }
 
 
         }
@@ -468,6 +460,23 @@ public partial class EditRecordForm : ContentPage
 
     private async void Delete_Clicked(object sender, EventArgs e)
     {
-        await _vm.DeleteRecord(_vm.AddRecord);
+        
+        bool answer = await DisplayAlert("SpaceSRM інформує",
+                "Ви точно хочете видалити цей запис",
+                "Ні", "Так");
+        if (!answer)
+        {
+            await _vm.DeleteRecord(_vm.AddRecord);
+            _vm.Clients = new System.Collections.ObjectModel.ObservableCollection<Client>();
+            await Navigation.PopAsync();
+        }
+    }
+
+    private async void LoadingPhoto_Clicked(object sender, EventArgs e)
+    {
+        LoadintPhotoIndicator.HeightRequest = 60;
+        await _vm.LoadingPhoto();
+        LoadintPhotoIndicator.HeightRequest = 0;
+
     }
 }

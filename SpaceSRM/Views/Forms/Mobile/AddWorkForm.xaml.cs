@@ -6,8 +6,9 @@ namespace SpaceSRM.Views.Forms.Mobile;
 public partial class AddWorkForm : ContentPage
 {
     RecordsViewModel _vm;
-    public bool IsFirst = true;
-    private bool isInitialized = false;
+   
+    bool IsAddService = false;
+    bool IsAddEmployer = false;
     public AddWorkForm(RecordsViewModel vm)
 	{
         InitializeComponent();
@@ -15,16 +16,27 @@ public partial class AddWorkForm : ContentPage
 	}
     protected override async void OnAppearing()
     {
-        if (IsFirst)
+        await Task.Delay(600);
+        if (IsAddService)
         {
-            await Task.Run(
-                        async () => {
-                            await Task.Delay(900);
-                            await _vm.LoadingDataServices();
-                            await _vm.LoadingDataEmployers();
-                        });
+            await _vm.LoadingDataServices();
         }
+        if(IsAddEmployer){
+            await _vm.LoadingDataEmployers();
+        }
+        await Task.Run(() => {
+            _vm.VisualDataEmployers();
+            _vm.VisualDataServices();
+        });
+        
         base.OnAppearing();
+    }
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        
+        _vm.ClearVisualEmployers();
+        _vm.ClearVisualServices();
     }
     private async void OnBack(object sender, EventArgs e)
     {
@@ -32,7 +44,7 @@ public partial class AddWorkForm : ContentPage
     }
     private async void OnAddService(object sender, EventArgs e)
     {
-        IsFirst = true;
+        IsAddService = true;
         Forms.DesktopSetting.AddServiceForm page = new Forms.DesktopSetting.AddServiceForm();
         await Navigation.PushAsync(page);
     }
@@ -48,7 +60,7 @@ public partial class AddWorkForm : ContentPage
 
     private async void OnAddEmployer(object sender, EventArgs e)
     {
-        IsFirst = true;
+        IsAddEmployer = true;
         Forms.DesktopSetting.AddEmployerForm page = new Forms.DesktopSetting.AddEmployerForm();
         await Navigation.PushAsync(page);
     }
@@ -68,7 +80,8 @@ public partial class AddWorkForm : ContentPage
             else
             {
                 int price;
-                if(!(int.TryParse(Price.Text,out price)))
+                int priceCost;
+                if(!(int.TryParse(Price.Text,out price) && int.TryParse(PriceCost.Text, out priceCost)))
                 {
                     await Navigation.PopAsync();
                     return;
@@ -79,10 +92,10 @@ public partial class AddWorkForm : ContentPage
                     newWork.Service = _vm.SelectService;
                     newWork.Employers = _vm.SelectEmployers.ToList();
                     newWork.TruePrice = price;
-                    
-                    _vm.AddRecord.Works.Add(newWork);
-                    _vm.Works.Add(newWork);
-                    
+                    newWork.DescriptionCost = DescriptionCost.Text;
+                    newWork.PriceCost = priceCost;
+                    //_vm.AddRecord.Works.Add(newWork);
+                    _vm.WorksData.Add(newWork);  
                     _vm.SelectService = new Service();
                     _vm.SelectEmployers = new List<Employer>();
                     await Navigation.PopAsync();
@@ -101,15 +114,9 @@ public partial class AddWorkForm : ContentPage
     {
         try
         {
-            if (e.CurrentSelection != null)
-            {
-                List<Employer> empl = e.CurrentSelection.Cast<Employer>().ToList(); ;
-                if (empl != null) _vm.SelectEmployers = empl;
-            }
+            List<Employer> empl = e.CurrentSelection.Cast<Employer>().ToList(); ;
+            if (empl != null) _vm.SelectEmployers = empl;
         }
-        catch
-        {
-
-        }
+        catch { }
     }
 }

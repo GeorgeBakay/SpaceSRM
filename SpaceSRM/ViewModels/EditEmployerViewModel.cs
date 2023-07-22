@@ -17,7 +17,7 @@ namespace SpaceSRM.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-
+ 
         readonly IEmployer employerConnection = new EmployerRepository();
         ObservableCollection<Employer> employers;
 
@@ -139,7 +139,7 @@ namespace SpaceSRM.ViewModels
             ThisPhone = p?.Phone;
         });
 
-        public ICommand DeleteClient => new Command(async () => {
+        public ICommand DeleteEmployer => new Command(async () => {
             bool check = await Application.Current.MainPage.DisplayAlert("Підтвердження", $"Ви точно хочете видалити {ThisName}?", "так", "ні");
             if (!check)
             {
@@ -158,7 +158,7 @@ namespace SpaceSRM.ViewModels
                 StatusDel = response;
             }
         });
-        public ICommand EditClient => new Command(async () => {
+        public ICommand EditEmployer => new Command(async () => {
             {
                 if (ThisName == "" || ThisSurName == "" || ThisPhone == "")
                 {

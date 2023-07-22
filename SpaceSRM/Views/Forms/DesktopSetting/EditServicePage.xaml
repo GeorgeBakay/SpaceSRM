@@ -5,7 +5,21 @@
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              Title="EditServicePage">
-    
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Style.Triggers>
+
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="PlaceholderColor" Value="Gray" />
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
     <Grid >
         
         <Grid.ColumnDefinitions>

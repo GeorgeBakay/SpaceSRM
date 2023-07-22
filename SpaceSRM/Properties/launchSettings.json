@@ -2,17 +2,9 @@
   "profiles": {
     "Windows Machine": {
       "commandName": "Project",
-      "nativeDebugging": false
+      "nativeDebugging": true,
+      "jsWebView2Debugging": true,
+      "sqlDebugging": true
     }
   }
-  //"http": {
-  //  "commandName": "Project",
-  //  "dotnetRunMessages": true,
-  //  "launchBrowser": true,
-  //  "launchUrl": "api",
-  //  "applicationUrl": "http://localhost:7173",
-  //  "environmentVariables": {
-  //    "ASPNETCORE_ENVIRONMENT": "Development"
-  //  }
-  //}
 }

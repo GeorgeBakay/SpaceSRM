@@ -11,6 +11,7 @@ namespace SpaceSRM.Date.Interface
     {
         public Task<string> AddClient(string name, string SurNeme, string Phone);
         public Task<List<Client>> GetClientsQuick();
+        public Task<List<Client>> GetClients();
         public Task<string> DeleteClient(int id);
         public Task<string> EditClient(Client client);
     }

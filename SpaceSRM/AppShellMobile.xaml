@@ -8,23 +8,19 @@
     BackgroundColor="#0a0a0a"
     Shell.NavBarIsVisible="False"
     NavigationPage.HasNavigationBar="False"
-   
     >
     
-   
-
     <TabBar>
         <Tab Title="Запис" Icon="record">
             <ShellContent  ContentTemplate="{DataTemplate local:Views.Records}" />
         </Tab>
-        <Tab Title="Статистика" Icon="statistic">
-
-            <ShellContent  ContentTemplate="{DataTemplate local:Views.Statistic}" />
+        <Tab Title="Статистика" Icon="statistic" >
+            <ShellContent  ContentTemplate="{DataTemplate local:Views.Statistic}"/>
         </Tab>
-        <Tab Icon="report" Title="Звіт">
-            <ShellContent ContentTemplate="{DataTemplate local:Views.Report}" />
+        <Tab  Icon="report" Title="Календар">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Calendar}" />
         </Tab>
-        <Tab Icon="costs" Title="Календар">
+        <Tab Icon="costs" Title="Витрати">
             <ShellContent ContentTemplate="{DataTemplate local:Views.Costs}" />
         </Tab>
         <Tab Icon="setting" Title="Налаштування">

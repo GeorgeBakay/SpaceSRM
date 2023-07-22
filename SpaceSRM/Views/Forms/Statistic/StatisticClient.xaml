@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.Statistic.StatisticClient"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="StatisticClient">
+   
+        <ScrollView Margin="10" HorizontalOptions="FillAndExpand">
+            <Grid ColumnSpacing="10" RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="200"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                   Grid.Row="0"
+                    Padding="15,10,0,0"
+                   Grid.ColumnSpan="2"
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                   Stroke="Transparent"
+                   BackgroundColor="#1a1919"
+                   >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ImageButton Grid.Row="0"
+                                BackgroundColor="Transparent"
+                                Source="back.png"
+                                Clicked="OnBack"
+                                WidthRequest="25"
+                                HeightRequest="25"
+                                HorizontalOptions="Start"/>
+                        <Label TextColor="#548AFE" Text="Ім'я" Grid.Row="1" FontSize="13"></Label>
+                        <Label Text="{Binding SelectClient.Name}" Grid.Row="2" FontSize="15"></Label>
+                        <Label TextColor="#548AFE" Text="Призвіще" Grid.Row="3" FontSize="13"></Label>
+                        <Label Text="{Binding SelectClient.SurName}" Grid.Row="4" FontSize="15"></Label>
+                        <Label TextColor="#548AFE" Text="Номер телефону" Grid.Row="5" FontSize="13"></Label>
+                        <Label Text="{Binding SelectClient.Phone}" Grid.Row="6" FontSize="15"></Label>
+                    </Grid>
+                </Border>
+                <Grid Grid.Column="3" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border
+                   Grid.Row="0"
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                   Stroke="Transparent"
+                   BackgroundColor="#1a1919"
+                    Padding="0"
+                   >
+                        <Grid Grid.Column="3" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label TextColor="#548AFE" 
+                               VerticalOptions="End"
+                               HorizontalOptions="Center"
+                               Text="Дата від" Grid.Row="0"
+                               FontSize="13"></Label>
+                            <DatePicker 
+                            VerticalOptions="Start"
+                            Date="{Binding DateFrom}"
+                            HorizontalOptions="Center"
+                            
+                            DateSelected="DateFrom_DateSelected"
+                            Grid.Row="1" 
+                            FontSize="15"
+                            Format="d" 
+                            TextColor="White" >
+                            </DatePicker>
+                        </Grid>
+                    </Border>
+                    <Border
+                   Grid.Row="1"
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                   Stroke="Transparent"
+                   Padding="0"
+                   BackgroundColor="#1a1919"
+                   >
+                        <Grid Grid.Column="3" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label TextColor="#548AFE" 
+                               VerticalOptions="End"
+                               HorizontalOptions="Center"
+                               Text="Дата до" Grid.Row="0"
+                               FontSize="13"></Label>
+                            <DatePicker 
+                            DateSelected="DateTo_DateSelected"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            Date="{Binding DateTo}"
+                            Grid.Row="1" 
+                            FontSize="15"
+                            Format="d" 
+                            TextColor="White" >
+                            </DatePicker>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Border
+                   StrokeShape="RoundRectangle 15,15,15,15"
+                   Stroke="Transparent"
+                   Padding="15,20,0,0"
+                   BackgroundColor="#1a1919"
+                   >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label TextColor="#548AFE" Text="Прибуток" Grid.Row="0" FontSize="13"></Label>
+                            <Label Text="{Binding Profit}" Grid.Row="1" FontSize="15"></Label>
+                            <Label TextColor="#548AFE" Text="К-сть записів" Grid.Row="2" FontSize="13"></Label>
+                            <Label Text="{Binding RecordsCount}" Grid.Row="3" FontSize="15"></Label>
+                            <Label TextColor="#548AFE" Text="К-сть робіт" Grid.Row="4" FontSize="13"></Label>
+                            <Label Text="{Binding WorksCount}" Grid.Row="5" FontSize="15"></Label>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                    <Border 
+                    StrokeShape="RoundRectangle 15,15,15,15"
+                   Stroke="Transparent"
+                   Padding="0"
+                   BackgroundColor="#1a1919"
+                   >
+                        <lvc:PolarChart 
+                        BackgroundColor="#1a1919"              
+                        Series="{Binding SeriesWorks}" 
+                        AngleAxes="{Binding AngleAxes}"   
+                        InitialRotation="-45" >
+                        </lvc:PolarChart>
+                    </Border>
+                </Grid>
+                
+                <Border
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                StrokeShape="RoundRectangle 15,15,15,15"
+                Stroke="Transparent"
+                Padding="10"
+                BackgroundColor="#1a1919"
+                >
+                <ScrollView 
+                        
+                        VerticalOptions="FillAndExpand"
+                        >
+                    <ScrollView.Content>
+                        <CollectionView
+                            x:Name="CollectionWorks"
+                            Margin="10"
+                            ItemsSource="{Binding RecordsVisual}"
+                             >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid  Padding="0,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Label VerticalTextAlignment="Center" Text="{Binding Brand}" Grid.Column="0"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                        <Label VerticalTextAlignment="Center" Text="{Binding NumberOfCar}" Grid.Column="1"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                        <Label VerticalTextAlignment="Center"  Grid.Column="2" Text="{Binding DateEnd}" FontSize="12" HorizontalTextAlignment="Center"/>
+                                        <Label VerticalTextAlignment="Center"  Grid.Column="3" Text="{Binding Sum}"  FontSize="12" HorizontalTextAlignment="Center"/>
+
+                                        <Label VerticalTextAlignment="Center" Text="Список робіт" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                        <CollectionView
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="3"
+                                            ItemsSource="{Binding Works}"
+                                            
+                                             >
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid  Padding="0,10">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label VerticalTextAlignment="Center" TextColor="#548AFE"  Text="{Binding Service.Name}" Grid.Column="0"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                                        <Label VerticalTextAlignment="Center" TextColor="#548AFE"  Text="{Binding Service.Type}" Grid.Column="1"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                                        <Label VerticalTextAlignment="Center" TextColor="#548AFE"  Grid.Column="2" Text="{Binding Price}" HorizontalTextAlignment="Center" FontSize="12"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView.Content>
+                </ScrollView>
+            </Border>
+            </Grid>
+        </ScrollView>
+    
+</ContentPage>

@@ -43,6 +43,12 @@ namespace SpaceSRM.Date.Repository
             return response;
         }
 
+        public async Task<List<Employer>> GetEmployers()
+        {
+            List<Employer> clients = await _httpClientSend.GetEmployers();
+            return clients;
+        }
+
         public async Task<List<Employer>> GetEmployersQuick()
         {
             List<Employer> clients = await _httpClientSend.GetEmployersQuick();

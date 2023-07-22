@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Maui.Controls;assembly=Microsoft.Maui.Controls"
+             x:Class="SpaceSRM.Views.Calendar"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+
+             Title="Clalendar">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition x:Name="rowWithCalendar" Height="100"/>
+                
+            </Grid.RowDefinitions>
+            <Label 
+                Text="Календар"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontSize="20"
+                Grid.Row="0"/>
+            <Border
+                Grid.Row="1"
+                HorizontalOptions="Fill" 
+
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 15,15,15,15"
+                StrokeThickness="0">
+             
+
+            </Border>
+            
+        </Grid>
+        
+    </ScrollView>
+</ContentPage>

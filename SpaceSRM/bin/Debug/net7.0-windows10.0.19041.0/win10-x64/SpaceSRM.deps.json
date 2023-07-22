@@ -10,6 +10,8 @@
       "SpaceSRM/1.0": {
         "dependencies": {
           "CommunityToolkit.Maui": "1.3.0",
+          "LiveChartsCore.SkiaSharpView.Maui": "2.0.0-beta.710",
+          "LiveChartsCore.SkiaSharpView.WinUI": "2.0.0-beta.710",
           "Microsoft.Data.SqlClient": "5.1.0",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -22,6 +24,8 @@
           "Newtonsoft.Json": "13.0.2",
           "SimpleToolkit.Core": "2.0.3",
           "SimpleToolkit.SimpleShell": "2.1.0",
+          "Syncfusion.Maui.Calendar": "22.1.37",
+          "Syncfusion.Maui.Scheduler": "22.1.37",
           "runtimepack.Microsoft.NETCore.App.Runtime.win-x64": "7.0.2",
           "runtimepack.Microsoft.WindowsDesktop.App.Runtime.win-x64": "7.0.2",
           "runtimepack.Microsoft.Maui.Core.Runtime.win": "7.0.52",
@@ -1075,6 +1079,73 @@
           }
         }
       },
+      "HarfBuzzSharp/2.8.2.3": {
+        "dependencies": {
+          "HarfBuzzSharp.NativeAssets.Win32": "2.8.2.3",
+          "HarfBuzzSharp.NativeAssets.macOS": "2.8.2.3"
+        },
+        "runtime": {
+          "lib/net6.0/HarfBuzzSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.8.2.3"
+          }
+        }
+      },
+      "HarfBuzzSharp.NativeAssets.macOS/2.8.2.3": {},
+      "HarfBuzzSharp.NativeAssets.Win32/2.8.2.3": {
+        "native": {
+          "runtimes/win-x64/native/libHarfBuzzSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "LiveChartsCore/2.0.0-beta.710": {
+        "runtime": {
+          "lib/net6.0/LiveChartsCore.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "LiveChartsCore.SkiaSharpView/2.0.0-beta.710": {
+        "dependencies": {
+          "LiveChartsCore": "2.0.0-beta.710",
+          "SkiaSharp": "2.88.3",
+          "SkiaSharp.HarfBuzz": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0/LiveChartsCore.SkiaSharpView.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "LiveChartsCore.SkiaSharpView.Maui/2.0.0-beta.710": {
+        "dependencies": {
+          "LiveChartsCore": "2.0.0-beta.710",
+          "LiveChartsCore.SkiaSharpView": "2.0.0-beta.710",
+          "SkiaSharp.Views.Maui.Controls.Compatibility": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0/LiveChartsCore.SkiaSharpView.Maui.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "LiveChartsCore.SkiaSharpView.WinUI/2.0.0-beta.710": {
+        "dependencies": {
+          "LiveChartsCore": "2.0.0-beta.710",
+          "LiveChartsCore.SkiaSharpView": "2.0.0-beta.710",
+          "SkiaSharp.Views.WinUI": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041/LiveChartsCore.SkiaSharpView.WinUI.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -1460,6 +1531,130 @@
           }
         }
       },
+      "SkiaSharp/2.88.3": {
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "2.88.3",
+          "SkiaSharp.NativeAssets.macOS": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.HarfBuzz/2.88.3": {
+        "dependencies": {
+          "HarfBuzzSharp": "2.8.2.3",
+          "SkiaSharp": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0/SkiaSharp.HarfBuzz.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS/2.88.3": {},
+      "SkiaSharp.NativeAssets.Win32/2.88.3": {
+        "native": {
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Maui.Controls/2.88.3": {
+        "dependencies": {
+          "SkiaSharp.Views.Maui.Core": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.18362.0/SkiaSharp.Views.Maui.Controls.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Maui.Controls.Compatibility/2.88.3": {
+        "dependencies": {
+          "SkiaSharp.Views.Maui.Controls": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.18362.0/SkiaSharp.Views.Maui.Controls.Compatibility.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Maui.Core/2.88.3": {
+        "dependencies": {
+          "SkiaSharp": "2.88.3",
+          "SkiaSharp.Views.WinUI": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.18362.0/SkiaSharp.Views.Maui.Core.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.WinUI/2.88.3": {
+        "dependencies": {
+          "Microsoft.WindowsAppSDK": "1.2.221109.1",
+          "SkiaSharp": "2.88.3"
+        },
+        "runtime": {
+          "lib/net6.0-windows10.0.19041.0/SkiaSharp.Views.Windows.dll": {
+            "assemblyVersion": "2.88.0.0",
+            "fileVersion": "2.88.3.0"
+          }
+        }
+      },
+      "Syncfusion.Licensing/22.1.37": {
+        "runtime": {
+          "lib/net7.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "22.1.37.0",
+            "fileVersion": "22.1.37.0"
+          }
+        }
+      },
+      "Syncfusion.Maui.Calendar/22.1.37": {
+        "dependencies": {
+          "Syncfusion.Maui.Core": "22.1.37"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "assemblyVersion": "22.1.37.0",
+            "fileVersion": "22.1.37.0"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/22.1.37": {
+        "dependencies": {
+          "Syncfusion.Licensing": "22.1.37"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "assemblyVersion": "22.1.37.0",
+            "fileVersion": "22.1.37.0"
+          }
+        }
+      },
+      "Syncfusion.Maui.Scheduler/22.1.37": {
+        "dependencies": {
+          "Syncfusion.Maui.Core": "22.1.37"
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041.0/Syncfusion.Maui.Scheduler.dll": {
+            "assemblyVersion": "22.1.37.0",
+            "fileVersion": "22.1.37.0"
+          }
+        },
+        "resources": {
+          "lib/net7.0-windows10.0.19041.0/en-US/Syncfusion.Maui.Scheduler.resources.dll": {
+            "locale": "en-US"
+          }
+        }
+      },
       "System.Configuration.ConfigurationManager/6.0.1": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "6.0.0",
@@ -1633,6 +1828,55 @@
       "sha512": "sha512-/uFFeiMp8vXNdLoIi2XbDT4ddjA6fx3YrxdDKwZVUTMMghpEa2Y50PmpaEnFrmTZmYNpqgpFm3X+NGPFjoe2Ng==",
       "path": "communitytoolkit.maui.core/1.3.0",
       "hashPath": "communitytoolkit.maui.core.1.3.0.nupkg.sha512"
+    },
+    "HarfBuzzSharp/2.8.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8MwXm9J4dXHuTdzPo29nHgDbt4+6P+RrPrH/qrxcERf29cpLlFbjvP3eFPwHmdUrl4KL2SHEZi2ZuQ5ndeIL1w==",
+      "path": "harfbuzzsharp/2.8.2.3",
+      "hashPath": "harfbuzzsharp.2.8.2.3.nupkg.sha512"
+    },
+    "HarfBuzzSharp.NativeAssets.macOS/2.8.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uwz9pB3hMuxzI/bSkjVrsOJH7Wo1L+0Md5ZmEMDM/j7xDHtR9d3mfg/CfxhMIcTiUC4JgX49FZK0y2ojgu1dww==",
+      "path": "harfbuzzsharp.nativeassets.macos/2.8.2.3",
+      "hashPath": "harfbuzzsharp.nativeassets.macos.2.8.2.3.nupkg.sha512"
+    },
+    "HarfBuzzSharp.NativeAssets.Win32/2.8.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wo6QpE4+a+PFVdfIBoLkLr4wq2uC0m9TZC8FAfy4ZnLsUc10WL0Egk9EBHHhDCeokNOXDse5YtvuTYtS/rbHfg==",
+      "path": "harfbuzzsharp.nativeassets.win32/2.8.2.3",
+      "hashPath": "harfbuzzsharp.nativeassets.win32.2.8.2.3.nupkg.sha512"
+    },
+    "LiveChartsCore/2.0.0-beta.710": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6ak1We4oKlSDE5YGxR3LaCQdvmZS/Zg8GLgKCszQb+WJn3ozKneFquCSUw+O3BPq2e88RzAN6fK/95d7CuU68g==",
+      "path": "livechartscore/2.0.0-beta.710",
+      "hashPath": "livechartscore.2.0.0-beta.710.nupkg.sha512"
+    },
+    "LiveChartsCore.SkiaSharpView/2.0.0-beta.710": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VeFi35J4l7vY9Tt2vmvSpc1ntmoYsIynQ4xkX1D7Jd+nxpMSqA3ft02OxPOxqSP2fEe9LS7NT6FLMMy3Ab2+xQ==",
+      "path": "livechartscore.skiasharpview/2.0.0-beta.710",
+      "hashPath": "livechartscore.skiasharpview.2.0.0-beta.710.nupkg.sha512"
+    },
+    "LiveChartsCore.SkiaSharpView.Maui/2.0.0-beta.710": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9+B0njY7GVMHHArK66rejASntpUW0+yorojtz29c7bo3xdyGqB7sYzeqe/IagnORoFcZH0oaiPRemu4ECqI5AQ==",
+      "path": "livechartscore.skiasharpview.maui/2.0.0-beta.710",
+      "hashPath": "livechartscore.skiasharpview.maui.2.0.0-beta.710.nupkg.sha512"
+    },
+    "LiveChartsCore.SkiaSharpView.WinUI/2.0.0-beta.710": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/0VH6vbelX+ok16SfaDMeFTXxISGF1CQ5nfecDmOZvdxl57NjdyYJuUmjewEFNnKbu3hWv98npHDoECof8lNDQ==",
+      "path": "livechartscore.skiasharpview.winui/2.0.0-beta.710",
+      "hashPath": "livechartscore.skiasharpview.winui.2.0.0-beta.710.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",
@@ -1885,6 +2129,90 @@
       "sha512": "sha512-fwqSHq+gFZvxDk9ETp1P7S8gS0HH5YZXqfG7jplsj7M2xS8nt4mkj9bYE3WiAIsb2dfbl3SQgV6/y63ZIT1/0w==",
       "path": "simpletoolkit.simpleshell/2.1.0",
       "hashPath": "simpletoolkit.simpleshell.2.1.0.nupkg.sha512"
+    },
+    "SkiaSharp/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GG8X3EdfwyBfwjl639UIiOVOKEdeoqDgYrz0P1MUCnefXt9cofN+AK8YB/v1+5cLMr03ieWCQdDmPqnFIzSxZw==",
+      "path": "skiasharp/2.88.3",
+      "hashPath": "skiasharp.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.HarfBuzz/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hH6v4ltTb34eqn5tx1qLSAN7O+ppZCV5DnZw0FR7RwxXYqCeQYbBNgsaPyrZ1nkvtCDD1pH79taeO6SvqG+IAg==",
+      "path": "skiasharp.harfbuzz/2.88.3",
+      "hashPath": "skiasharp.harfbuzz.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.macOS/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CEbWAXMGFkPV3S1snBKK7jEG3+xud/9kmSAhu0BEUKKtlMdxx+Qal0U9bntQREM9QpqP5xLWZooodi8IlV8MEg==",
+      "path": "skiasharp.nativeassets.macos/2.88.3",
+      "hashPath": "skiasharp.nativeassets.macos.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.NativeAssets.Win32/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MU4ASL8VAbTv5vSw1PoiWjjjpjtGhWtFYuJnrN4sNHFCePb2ohQij9JhSdqLLxk7RpRtWPdV93fbA53Pt+J0yw==",
+      "path": "skiasharp.nativeassets.win32/2.88.3",
+      "hashPath": "skiasharp.nativeassets.win32.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Maui.Controls/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fvnvZdfWFYrptu37ul9/rT3QOdhrSUrMrBsHWcDpanVM04KOpHBWJDv/LEsD0jp1rE7TPIXXQk1RXutfXSYveg==",
+      "path": "skiasharp.views.maui.controls/2.88.3",
+      "hashPath": "skiasharp.views.maui.controls.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Maui.Controls.Compatibility/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oQO25hl9emcfeUSIlcNY+cEYQ171PFHbYhjw3dptgpVLgX97e9Y6yNHcchxcTTdyiNuK8E9oEBSx8K709nUvnw==",
+      "path": "skiasharp.views.maui.controls.compatibility/2.88.3",
+      "hashPath": "skiasharp.views.maui.controls.compatibility.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Maui.Core/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kP7m/DxrGeitgaN9hU7UmOeV4mRMfKdRf+z/SrAJhk2PXJSQJr3jnpBIBr3STTCkWBOuPzw0svQhwonrI2rj5g==",
+      "path": "skiasharp.views.maui.core/2.88.3",
+      "hashPath": "skiasharp.views.maui.core.2.88.3.nupkg.sha512"
+    },
+    "SkiaSharp.Views.WinUI/2.88.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lFMAUZfh8ALYwrdEHNBoFPb1gd9+cOG0nWMvixXPjvGZezEBQIb17W2d9Wr4/zd4w049qA2iH5bQFbeK8S7iQw==",
+      "path": "skiasharp.views.winui/2.88.3",
+      "hashPath": "skiasharp.views.winui.2.88.3.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/22.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HP5qCjGBp/HUUuSBjD7Wrxq5MhCjws8RSia3SQiw49D/kEAhVmXVVZjY8zQYuDjqhyz32WlZb8eBi/9z+7bkNA==",
+      "path": "syncfusion.licensing/22.1.37",
+      "hashPath": "syncfusion.licensing.22.1.37.nupkg.sha512"
+    },
+    "Syncfusion.Maui.Calendar/22.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oKD8FdxQAt1hrW4KaQ1m9UcJYCxYygZxMb8BoHl8ygxnYl8mtsq1FVXX0pPKmnpbVFWFf+3BDoI65q+3sHkDYw==",
+      "path": "syncfusion.maui.calendar/22.1.37",
+      "hashPath": "syncfusion.maui.calendar.22.1.37.nupkg.sha512"
+    },
+    "Syncfusion.Maui.Core/22.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6kbBoyBRYqkXra7EG9BlG9j56n1o5I9HuEDYzmxT9gOfAsbr/qAhf5CtDJGBA+rHTaqXRxSDxibjZQnEDETp2g==",
+      "path": "syncfusion.maui.core/22.1.37",
+      "hashPath": "syncfusion.maui.core.22.1.37.nupkg.sha512"
+    },
+    "Syncfusion.Maui.Scheduler/22.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J28ZrrC2yOC50CMCSYbTllRe6qwqlnzgx+BbBj4ZHFC+ivDsQOTGpVqv2R+UlyIzMUuvKm2UbR0aP3Cuf7MsNA==",
+      "path": "syncfusion.maui.scheduler/22.1.37",
+      "hashPath": "syncfusion.maui.scheduler.22.1.37.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/6.0.1": {
       "type": "package",

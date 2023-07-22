@@ -34,6 +34,7 @@ namespace SpaceSRM.Models
         //Марка маники
         public string Brand { get; set; } = "";
         public string NumberOfCar { get; set; } = "";
+        public string GasCount { get; set; } = "";
 
         //Яку роботу потрібно виконати
 
@@ -50,7 +51,7 @@ namespace SpaceSRM.Models
         public Status Status { get; set; } = Status.Wait;
         public string BodyType { get; set; } = "";
         public string BodySize { get; set; } = "";
-
+        public bool SendMessage { get; set; } = false;
         public int Discount { get; set; } = 0;
         public float Sum { get; set; } = 0;
     }

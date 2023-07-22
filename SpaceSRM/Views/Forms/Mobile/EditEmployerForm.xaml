@@ -5,6 +5,21 @@
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              Title="EditEmployerForm">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Style.Triggers>
+
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="PlaceholderColor" Value="Gray" />
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
     <VerticalStackLayout HorizontalOptions="Fill" Margin="10">
         <ImageButton Margin="0,10" BackgroundColor="Transparent" Source="back.png" Clicked="OnBack" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
 
@@ -49,7 +64,7 @@
                         FontSize="15"
                         Text="Видалити"
                         BackgroundColor="Transparent"
-                        Command="{Binding DeleteService}">
+                        Command="{Binding DeleteEmployer}">
                 </Button>
             </Border>
             <Border 
@@ -66,7 +81,7 @@
                         FontSize="15"
                         Text="Редагувати"
                         BackgroundColor="Transparent"
-                        Command="{Binding EditService}"
+                        Command="{Binding EditEmployer}"
                         >
 
                 </Button>

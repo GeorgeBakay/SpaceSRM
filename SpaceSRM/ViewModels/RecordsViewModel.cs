@@ -6,19 +6,24 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-
 namespace SpaceSRM.ViewModels
 {
     public class RecordsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private readonly IRecord recordConnection = new RecordRepository();
+        readonly IRecord recordConnection = new RecordRepository();
         readonly IClient clientConnection = new ClientRepository();
         readonly IEmployer employerConnection = new EmployerRepository();
         readonly IService serviceConnection = new ServiceRepository();
-        //Внутрішні поля
-        ObservableCollection<Record> records;
-        ObservableCollection<Client> clients;
+        //Внутнрішні поля для зберігання данних
+        List<Work> worksData = new List<Work>();
+        List<Client> clientsData = new List<Client>();
+        List<Employer> employersData= new List<Employer>();
+        List<Service> servicesData = new List<Service>();
+
+        //Внутрішні поля для візуалізації
+        ObservableCollection<Record> records = new ObservableCollection<Record>();
+        ObservableCollection<Client> clients = new ObservableCollection<Client>();
         ObservableCollection<Work> works = new ObservableCollection<Work>();
         ObservableCollection<Employer> employers;
         ObservableCollection<Service> services;
@@ -43,6 +48,7 @@ namespace SpaceSRM.ViewModels
         Client selectClient = new Client();
         Service selectService = new Service();
         List<Employer> selectEmployers = new List<Employer>();
+        Work selectWork;
         Record selectRecord;
 
         TimeSpan timeBefore = new TimeSpan();
@@ -54,6 +60,47 @@ namespace SpaceSRM.ViewModels
         int discountWork = 0;
 
 
+        public List<Service> ServicesData
+        {
+            get => servicesData;
+            set
+            {
+                servicesData = value;
+            }
+        }
+        public List<Employer> EmployersData
+        {
+            get => employersData;
+            set
+            {
+                employersData = value;
+            }
+        }
+        public List<Client> ClientsData
+        {
+            get => clientsData;
+            set
+            {
+                clientsData = value;
+            }
+        }
+        public List<Work> WorksData
+        {
+            get => worksData;
+            set
+            {
+                worksData = value;
+            }
+        }
+        public Work SelectWork
+        {
+            get => selectWork;
+            set
+            {
+                selectWork = value;
+                OnPropertyChanged();
+            }
+        }
         public CustomPhoto SelectPhoto
         {
             get => selectPhoto;
@@ -297,29 +344,55 @@ namespace SpaceSRM.ViewModels
         }
 
         //Методи і команди
+        public void ClearVisualWorks()
+        {
+            Works = new ObservableCollection<Work>();
+        }
+        public void VisualDataWorks()
+        {
+            Works = new ObservableCollection<Work>(WorksData);
+        }
         public async Task LoadingDataEmployers()
         {
             IsBusyEmployer = true;
-            List<Employer> list = await employerConnection.GetEmployersQuick();
-            if (list == null)
-            {
-                list = new List<Employer>();
-            }
-            Employers = new ObservableCollection<Employer>(list);
+            EmployersData = await employerConnection.GetEmployersQuick();
+            
 
             IsBusyEmployer = false;
+        }
+        public void VisualDataEmployers()
+        {
+            if (EmployersData == null)
+            {
+                EmployersData = new List<Employer>();
+            }
+            Employers = new ObservableCollection<Employer>(EmployersData);
+            IsBusyEmployer = false;
+        }
+        public void ClearVisualEmployers()
+        {
+            Employers = new ObservableCollection<Employer>();
         }
         public async Task LoadingDataServices()
         {
             IsBusyService = true;
-            List<Service> list = await serviceConnection.GetServicesQuick();
-            if (list == null)
-            {
-                list = new List<Service>();
-            }
-            Services = new ObservableCollection<Service>(list);
+            ServicesData = await serviceConnection.GetServicesQuick();
+            
 
             IsBusyService = false;
+        }
+        public void VisualDataServices()
+        {
+            if (ServicesData == null)
+            {
+                ServicesData = new List<Service>();
+            }
+            Services = new ObservableCollection<Service>(ServicesData);
+            IsBusyService = false;
+        }
+        public void ClearVisualServices()
+        {
+            Services = new ObservableCollection<Service>();
         }
         public async Task LoadingDataRecords()
         {
@@ -330,7 +403,11 @@ namespace SpaceSRM.ViewModels
             {
                 list = new List<Record>();
             }
-            Records = new ObservableCollection<Record>(list);
+            foreach (Record rec in list)
+            {
+                Records.Add(rec);
+            }
+
 
             IsBusy = false;
         }
@@ -362,6 +439,7 @@ namespace SpaceSRM.ViewModels
             }
 
             DiscountWork = AddRecord.Discount;
+            Sum = AddRecord.Sum;
 
             SelectClient = new Client()
             {
@@ -383,23 +461,27 @@ namespace SpaceSRM.ViewModels
                 i.Record = new Record();
                 thisWork.Record = new Record();
                 thisWork.RecordId = AddRecord.Id;
-                Works.Add(thisWork);
+                thisWork.PriceCost = i.PriceCost;
+                thisWork.DescriptionCost = i.DescriptionCost;
+                WorksData.Add(thisWork);
                 thisWork = new Work();
             }
+            IsBusyPhoto = false;
+        }
+        public async Task LoadingPhoto()
+        {
             if (AddRecord != null)
             {
                 IsBusyPhoto = true;
-
+                PhotoAfterPrevious = new ObservableCollection<CustomPhoto>();
+                PhotoBeforePrevious = new ObservableCollection<CustomPhoto>();
 
                 Photo photo = new Photo();
                 List<Photo> listPhotos = new List<Photo>();
-                
+
                 for (int j = 0; j <= 100; j++)
                 {
-                   
                     photo = await recordConnection.GetPhoto(AddRecord.Id, j);
-                    
-
                     if (photo.Bytes == null)
                     {
                         break;
@@ -409,7 +491,7 @@ namespace SpaceSRM.ViewModels
                         listPhotos.Add(photo);
                     }
                 }
-                foreach(Photo i in listPhotos)
+                foreach (Photo i in listPhotos)
                 {
                     switch (i.Type)
                     {
@@ -421,7 +503,7 @@ namespace SpaceSRM.ViewModels
                             break;
                     }
                 }
-                
+
                 IsBusyPhoto = false;
             }
         }
@@ -445,28 +527,31 @@ namespace SpaceSRM.ViewModels
             return image;
 
         }
-        public async Task LoadingDataClients()
+        public async Task VisualDataClients()
         {
-            IsBusyClient = true;
-            List<Client> list = await clientConnection.GetClientsQuick();
-            if (list == null)
+            if (ClientsData == null)
             {
-                list = new List<Client>();
+                ClientsData = new List<Client>();
             }
             else
             {
-                Clients = new ObservableCollection<Client>(list);
-               
-                //SelectClient = new Client();
-                //if (clientSel != null)
-                //{
-                //    SelectClient = clientSel;   
-                //}
+                foreach (Client cli in ClientsData)
+                {
+                    Clients.Add(cli);
+                }
             }
 
-            
-
+        }
+        public async Task LoadingDataClients()
+        {
+            IsBusyClient = true;
+            ClientsData = await clientConnection.GetClientsQuick();
+            ClientsData = ClientsData.OrderByDescending(u => u.Id).ToList();
             IsBusyClient = false;
+        }
+        public void ClearVisualClients()
+        {
+            Clients = new ObservableCollection<Client>();
         }
         public async Task DeletePhoto(CustomPhoto photo)
         {
