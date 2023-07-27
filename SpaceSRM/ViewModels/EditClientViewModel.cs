@@ -140,7 +140,7 @@ namespace SpaceSRM.ViewModels
             Clients = new ObservableCollection<Client>(list);
             IsBusy = false;
         }
-        public async Task DisLoadingData()
+        public void DisLoadingData()
         {
             Clients = new ObservableCollection<Client>();       
         }

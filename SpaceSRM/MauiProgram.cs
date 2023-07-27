@@ -11,6 +11,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using CalendarView.MAUI;
 namespace SpaceSRM;
 
 public static class MauiProgram

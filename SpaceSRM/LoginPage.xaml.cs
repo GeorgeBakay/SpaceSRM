@@ -30,11 +30,13 @@ public partial class LoginPage : ContentPage
     {
         if(User.Text != null && Password.Text != null)
         {
+            await LoginForm.FadeTo(0, 300, Easing.CubicOut);
             string userName = User.Text;
             string password = Password.Text;
             bool isValid = await _login.Login(userName, password);
             if (isValid)
             {
+                
                 await round1.ScaleTo(40, 1000,Easing.CubicIn);
 
 
@@ -48,6 +50,7 @@ public partial class LoginPage : ContentPage
             }
             else
             {
+                await LoginForm.FadeTo(1, 300, Easing.CubicOut);
                 await DisplayAlert("Помилка логінізації", "пароль або логін введені невірно, також пеервірте підключення до інтернету", "Знову");
             }
         }

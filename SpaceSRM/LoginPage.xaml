@@ -89,7 +89,7 @@
             </Grid>
 
 
-            <Grid>
+            <Grid x:Name="LoginForm">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="280"/>

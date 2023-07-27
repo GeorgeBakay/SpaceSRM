@@ -10,6 +10,7 @@ public class MonoPackageManager_Resources {
 		"Microsoft.Maui.Essentials.dll",
 		"Azure.Core.dll",
 		"Azure.Identity.dll",
+		"CalendarView.MAUI.dll",
 		"CommunityToolkit.Maui.dll",
 		"CommunityToolkit.Maui.Core.dll",
 		"GoogleGson.dll",

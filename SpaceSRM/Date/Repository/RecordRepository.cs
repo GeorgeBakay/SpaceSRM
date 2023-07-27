@@ -51,7 +51,39 @@ namespace SpaceSRM.Date.Repository
             Record response = await _httpClientSend.GetRecord(Id);
             return response;
         }
+        public async Task<List<Record>> GetRecordsWithColor()
+        {
+            List<Record>? records = await _httpClientSend.GetRecords();
+            if (records != null)
+            {
 
+                foreach (Record record in records)
+                {
+                    switch (record.Status)
+                    {
+                        case Status.End:
+                            record.ColorOfStatus = Color.FromArgb("#4ED16B");
+                            record.StatusString = "Завершено";
+                            break;
+                        case Status.Work:
+                            record.ColorOfStatus = Color.FromArgb("#CFD14E");
+                            record.StatusString = "Робота";
+                            break;
+                        case Status.Abolition:
+                            record.ColorOfStatus = Color.FromArgb("#FA6D6D");
+                            record.StatusString = "Відмова";
+                            break;
+                        case Status.Wait:
+                            record.ColorOfStatus = Color.FromArgb("#D1764E");
+                            record.StatusString = "Запис";
+                            break;
+                    }
+                }
+                return records;
+            }
+            return new List<Record>();
+            return records;
+        }
         public async Task<List<Record>> GetRecords()
         {
             List<Record>? records = await _httpClientSend.GetRecords();

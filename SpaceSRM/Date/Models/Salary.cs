@@ -9,6 +9,6 @@ namespace SpaceSRM.Models
         public string Description { get; set; }
         public int Value { get; set; }
         public int EmployerId { get; set; }
-        public Employer Employer { get; set; }
+        public Employer Employer { get; set; } 
     }
 }

@@ -8,7 +8,7 @@ public partial class Records : ContentPage
 {
 	private RecordsViewModel _vm = new RecordsViewModel();
     private bool IsFirst = true;
-    private bool isInitialized = true;
+
     public Records()
 	{
         InitializeComponent();

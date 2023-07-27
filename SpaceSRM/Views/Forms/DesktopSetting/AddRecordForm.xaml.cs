@@ -13,7 +13,7 @@ public partial class AddRecordForm : ContentPage
     private readonly IRecord recordConnection = new RecordRepository();
 
     private bool IsFirst = true;
-    private bool isInitialized = false;
+
     private bool IsAddClient = true;
     private bool IsEditWork = false; 
     public AddRecordForm()
@@ -63,7 +63,7 @@ public partial class AddRecordForm : ContentPage
         base.OnAppearing();
 
     }
-    protected override async void OnDisappearing()
+    protected override void OnDisappearing()
     {
         
         base.OnDisappearing();

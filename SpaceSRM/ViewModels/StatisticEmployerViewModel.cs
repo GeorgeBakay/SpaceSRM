@@ -384,6 +384,7 @@ namespace SpaceSRM.ViewModels
         public async Task AddSalary()
         {
             Salary.EmployerId = employer.Id;
+            Salary.Employer  = new Employer(); 
             string result = await salaryConnection.AddSalary(Salary);
         }
         public async Task DeleteSalary()

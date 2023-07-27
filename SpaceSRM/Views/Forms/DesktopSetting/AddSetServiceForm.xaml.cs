@@ -30,7 +30,7 @@ public partial class AddSetServiceForm : ContentPage
     private async void OnSubmitClicked(object sender, EventArgs e)
     {
         string name = Name.Text;
-        List<Service>? service = CheckService.SelectedItems.Cast<Service>().ToList();
+        List<Service> service = CheckService.SelectedItems.Cast<Service>().ToList();
         string discount = Discount.Text;
        
         int DiscountInt;

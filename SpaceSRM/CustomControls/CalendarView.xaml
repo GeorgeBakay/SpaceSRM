@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SpaceSRM.Date.Models"
+             x:Name="this"
+             Padding="0"
+             x:Class="SpaceSRM.CustomControls.CalendarView">
+    <Grid Margin="5" ColumnSpacing="20">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label TextColor="White" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding Source={x:Reference this},Path=TempDate,StringFormat='{0:MMMMMMMM}'}"/>
+        <HorizontalStackLayout Grid.Column="1" Spacing="20" Padding="0" HorizontalOptions="Start">
+            <Label FontSize="30" Text="&lt;" TextColor="White">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=PreviousMonthCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label FontSize="30" HorizontalOptions="Center" Text=">" TextColor="White">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=NextMonthCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </Grid>
+    
+    <CollectionView x:Name="collectionView" ItemsSource="{Binding Source={x:Reference this},Path=Dates}">
+        
+        <CollectionView.ItemsLayout>
+            
+            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+            
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:CalendarModel">
+                <Border  StrokeShape="RoundRectangle 8,8,8,8" 
+                         Stroke="#548AFE" 
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         BackgroundColor="#1a1919"
+                         Padding="0"
+                         >
+                   
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="{Binding Date,StringFormat='{0:ddd}'}"
+                               FontSize="10"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Date,StringFormat='{0:d }'}"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="True">
+                            <Setter Property="Stroke" Value="#4ED16B"/>
+                            <Setter Property="HeightRequest" Value="65"/>
+                            <Setter Property="WidthRequest" Value="65"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="False">
+                            <Setter Property="Stroke" Value="#548AFE"/>
+                            <Setter Property="HeightRequest" Value="60"/>
+                            <Setter Property="WidthRequest" Value="60"/>
+                        </DataTrigger>
+                    </Border.Triggers>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=CurrentDateCommand}"
+                                              CommandParameter="{Binding .}"/>
+                    </Border.GestureRecognizers>
+                </Border>
+                
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+    <Label TextColor="White" Margin="5" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Source={x:Reference this},Path=SelectedDate,StringFormat='{0:MMMMMM dd yyyy}'}"/>
+</StackLayout>

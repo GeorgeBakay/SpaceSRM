@@ -587,7 +587,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Client>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Client>();
             }
@@ -601,7 +601,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Client>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Client>();
             }
@@ -615,7 +615,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Employer>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Employer>();
             }
@@ -629,7 +629,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Employer>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Employer>();
             }
@@ -644,7 +644,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Service>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Service>();
             }
@@ -658,7 +658,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Service>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Service>();
             }
@@ -673,7 +673,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<SetService>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<SetService>();
             }
@@ -688,7 +688,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Record>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Record>();
             }
@@ -702,7 +702,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Record>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Record>();
             }
@@ -754,7 +754,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Work>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Work>();
             }
@@ -771,7 +771,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Cost>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Cost>();
             }
@@ -785,7 +785,7 @@ namespace SpaceSRM.Date.Repository
                 var result = JsonConvert.DeserializeObject<List<Salary>>(json);
                 return result;
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<Salary>();
             }
@@ -810,7 +810,7 @@ namespace SpaceSRM.Date.Repository
                 
                 return false;
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }

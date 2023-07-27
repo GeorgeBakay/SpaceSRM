@@ -7,6 +7,7 @@ namespace SpaceSRM.Date.Interface
     {
         public Task<List<Record>> GetRecordsQuick();
         public Task<List<Record>> GetRecords();
+        public Task<List<Record>> GetRecordsWithColor();
         public Task<List<Work>> GetWorks();
         public Task<string> AddPhoto(int Id,Photo photo);
         public Task<string> AddRecord(Record record);
