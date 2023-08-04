@@ -30,5 +30,9 @@ namespace SpaceSRM.Date.Repository
         {
             return await _httpClientSend.GetSalarysEmployer(employerId);
         }
+        public async Task<List<Salary>> GetSalarys()
+        {
+            return await _httpClientSend.GetSalarys();
+        }
     }
 }

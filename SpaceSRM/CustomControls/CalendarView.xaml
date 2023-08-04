@@ -5,62 +5,114 @@
              x:Name="this"
              Padding="0"
              x:Class="SpaceSRM.CustomControls.CalendarView">
-    <Grid Margin="5" ColumnSpacing="20">
+    <Grid Margin="5" ColumnSpacing="20" >
         <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label TextColor="White" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding Source={x:Reference this},Path=TempDate,StringFormat='{0:MMMMMMMM}'}"/>
-        <HorizontalStackLayout Grid.Column="1" Spacing="20" Padding="0" HorizontalOptions="Start">
-            <Label FontSize="30" Text="&lt;" TextColor="White">
+        <Border HeightRequest="50" StrokeShape="RoundRectangle 25,25,25,25" 
+                BackgroundColor="#4ED16B">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=ShowHideCalendar}"/>
+            </Border.GestureRecognizers>
+            
+        </Border>
+        <Label TextColor="Black" Grid.Column="1" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Text="{Binding Source={x:Reference this},Path=TempDate,StringFormat='{0:MMMMMMMM}'}"/>
+        <HorizontalStackLayout Grid.Column="2" Spacing="20" Padding="0" HorizontalOptions="Start">
+            <Label FontSize="30" Text="&lt;" TextColor="Black">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=PreviousMonthCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label FontSize="30" HorizontalOptions="Center" Text=">" TextColor="White">
+            <Label FontSize="30" HorizontalOptions="Center" Text=">" TextColor="Black">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=NextMonthCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
         </HorizontalStackLayout>
     </Grid>
-    
+
     <CollectionView x:Name="collectionView" ItemsSource="{Binding Source={x:Reference this},Path=Dates}">
-        
+
         <CollectionView.ItemsLayout>
-            
-            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
-            
+            <GridItemsLayout Orientation="Vertical" Span="{Binding Source={x:Reference this},Path=SpanCount}" />
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:CalendarModel">
-                <Border  StrokeShape="RoundRectangle 8,8,8,8" 
-                         Stroke="#548AFE" 
+                <Border 
+                    StrokeThickness="3"
+                    StrokeShape="RoundRectangle 30,30,30,30" 
+                         Stroke="#AFAFAF" 
                          WidthRequest="60"
                          HeightRequest="60"
-                         BackgroundColor="#1a1919"
+                         BackgroundColor="#AFAFAF"
                          Padding="0"
                          >
                    
                     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <Label Text="{Binding Date,StringFormat='{0:ddd}'}"
                                FontSize="10"
-                               HorizontalTextAlignment="Center"/>
+                               TextColor="Black"
+                               HorizontalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCalendar}" Value="True">
+                                    <Setter Property="FontSize" Value="8"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCalendar}" Value="False">
+                                    <Setter Property="FontSize" Value="10"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                         <Label Text="{Binding Date,StringFormat='{0:d }'}"
                                FontSize="15"
+                               TextColor="Black"
                                FontAttributes="Bold"
-                               HorizontalTextAlignment="Center"/>
+                               HorizontalTextAlignment="Center">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCalendar}" Value="True">
+                                    <Setter Property="FontSize" Value="12"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCalendar}" Value="False">
+                                    <Setter Property="FontSize" Value="15"/>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <Border 
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 3,3,3,3" 
+                          
+                            WidthRequest="5"
+                            HeightRequest="5"
+                            BackgroundColor="#AFAFAF"
+                            Padding="0">
+                            <Border.Triggers>
+                                <DataTrigger TargetType="Border" Binding="{Binding HaveActions}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="red"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Border" Binding="{Binding HaveActions}" Value="False">
+                                    <Setter Property="BackgroundColor" Value="#AFAFAF"/>
+                                </DataTrigger>
+                            </Border.Triggers>
+                        </Border>
                     </VerticalStackLayout>
                     <Border.Triggers>
                         <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="True">
                             <Setter Property="Stroke" Value="#4ED16B"/>
-                            <Setter Property="HeightRequest" Value="65"/>
-                            <Setter Property="WidthRequest" Value="65"/>
+                            
                         </DataTrigger>
-                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="False">
-                            <Setter Property="Stroke" Value="#548AFE"/>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsCalendar}" Value="True">
+                      
+                            <Setter Property="HeightRequest" Value="50"/>
+                            <Setter Property="WidthRequest" Value="50"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsCalendar}" Value="False">
                             <Setter Property="HeightRequest" Value="60"/>
                             <Setter Property="WidthRequest" Value="60"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="False">
+                            <Setter Property="Stroke" Value="#AFAFAF"/>
+                           
                         </DataTrigger>
                     </Border.Triggers>
                     <Border.GestureRecognizers>
@@ -72,5 +124,5 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
-    <Label TextColor="White" Margin="5" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Source={x:Reference this},Path=SelectedDate,StringFormat='{0:MMMMMM dd yyyy}'}"/>
+    <Label TextColor="Black" Margin="5" FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding Source={x:Reference this},Path=SelectedDate,StringFormat='{0:MMMMMM dd yyyy}'}"/>
 </StackLayout>

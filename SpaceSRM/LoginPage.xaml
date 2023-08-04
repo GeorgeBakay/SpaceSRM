@@ -15,21 +15,7 @@
             </Grid.ColumnDefinitions>
            
             <Grid>
-                <Border   
-                    ZIndex="99"
-                    Opacity="0"
-                    x:Name="round1"
-                    Margin="0"   
-                    TranslationX="100"
-                    TranslationY="-200"
-                    StrokeThickness="1"
-                    Stroke="#4ED16B"
-                    BackgroundColor="#4ED16B"
-                    HeightRequest="80"
-                    WidthRequest="80"
-                    StrokeShape="RoundRectangle 40,40,40,40">
-
-                </Border>
+               
                 <Border  
                     Opacity="0"
                     x:Name="round2"
@@ -84,6 +70,21 @@
                     HeightRequest="140"
                     WidthRequest="140"
                     StrokeShape="RoundRectangle 70,70,70,70">
+
+                </Border>
+                <Border   
+                   
+                    Opacity="0"
+                    x:Name="round1"
+                    Margin="0"   
+                    TranslationX="100"
+                    TranslationY="-200"
+                    StrokeThickness="1"
+                    Stroke="#4ED16B"
+                    BackgroundColor="#4ED16B"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    StrokeShape="RoundRectangle 40,40,40,40">
 
                 </Border>
             </Grid>

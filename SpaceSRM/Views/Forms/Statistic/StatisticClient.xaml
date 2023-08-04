@@ -5,12 +5,12 @@
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
              Title="StatisticClient">
    
-        <ScrollView Margin="10" HorizontalOptions="FillAndExpand">
+        <ScrollView x:Name="scrollView" Margin="10" HorizontalOptions="FillAndExpand">
             <Grid ColumnSpacing="10" RowSpacing="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="200"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
                     
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

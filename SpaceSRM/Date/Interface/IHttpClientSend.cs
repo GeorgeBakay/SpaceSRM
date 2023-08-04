@@ -62,6 +62,7 @@ namespace SpaceSRM.Date.Interface
         public Task<string> DeleteSalary(int Id);
         public Task<string> EditSalary(Salary salary);
         public Task<List<Salary>> GetSalarysEmployer(int employerId);
+        public Task<List<Salary>> GetSalarys();
         //Логінізація
         public Task<bool> Login(User user);
 

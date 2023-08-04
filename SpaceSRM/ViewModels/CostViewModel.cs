@@ -20,7 +20,7 @@ namespace SpaceSRM.ViewModels
         };
 
         ObservableCollection<Cost> costs = new ObservableCollection<Cost>();
-        ICost _costConnection = new CostRepository();
+        readonly ICost _costConnection = new CostRepository();
         string status = "";
         bool _isBusy = true;
         public bool IsBusy

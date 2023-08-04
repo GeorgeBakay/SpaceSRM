@@ -30,7 +30,7 @@ namespace SpaceSRM.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public async void LoadingData()
         {
             try
@@ -43,12 +43,24 @@ namespace SpaceSRM.ViewModels
             }
             catch { }
         }
+        public List<DateTime> GetActionDates()
+        {
+            HashSet<DateTime> result = new HashSet<DateTime>();
+            foreach (var record in records)
+            {
+                if(record.Status == Status.Wait)
+                {
+                    result.Add(new DateTime(record.DateStart.Date.Year, record.DateStart.Date.Month, record.DateStart.Date.Day));
+                }
+            }
+            return new List<DateTime>(result);
+        } 
         public  void ViewRecords(DateTime date)
         {
-            var recordsToVisual = records.Where(f => f.DateEnd.Date.Month >= date.Date.Month
-                && f.DateEnd.Date.Year >= date.Date.Year && f.DateEnd.Date.Day >= date.Date.Day
-                && f.DateStart.Date.Year <= date.Date.Year && f.DateStart.Date.Month <= date.Date.Month
-                && f.DateStart.Date.Day <= date.Date.Day).ToList();
+            var recordsToVisual = records.Where(f => ((f.DateEnd.Date >= date.Date) || (f.Status == Status.Wait
+                || f.Status == Status.Work))
+                &&
+                ((f.DateStart.Date <= date.Date))).ToList().OrderByDescending( u => u.DateStart);
             RecordsVisual = new ObservableCollection<Record>(recordsToVisual);
         }
         public void OnPropertyChanged([CallerMemberName] string prop = "")

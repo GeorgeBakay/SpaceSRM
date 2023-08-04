@@ -790,6 +790,20 @@ namespace SpaceSRM.Date.Repository
                 return new List<Salary>();
             }
         }
+        public async Task<List<Salary>> GetSalarys()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"/api/Space/GetSalarys");
+                string json = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<List<Salary>>(json);
+                return result;
+            }
+            catch
+            {
+                return new List<Salary>();
+            }
+        }
 
         //Логінізація
         public async Task<bool> Login(User user)

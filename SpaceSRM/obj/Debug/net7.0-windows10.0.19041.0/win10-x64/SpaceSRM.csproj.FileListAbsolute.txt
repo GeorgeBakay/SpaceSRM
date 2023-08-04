@@ -827,3 +827,6 @@ C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.1904
 C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Syncfusion.Maui.Core.dll
 C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Syncfusion.Maui.Scheduler.dll
 C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\en-US\Syncfusion.Maui.Scheduler.resources.dll
+C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CalendarView.MAUI.dll
+C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\XCalendar.Core.dll
+C:\Users\George\source\repos\SpaceSRM\SpaceSRM\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\XCalendar.Maui.dll

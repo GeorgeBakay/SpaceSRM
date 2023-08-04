@@ -33,7 +33,7 @@ public partial class AddClientForm : ContentPage
                 Result.Text = "Новий клієнт успішно доданий";
                 Result.TextColor = Color.FromHex("#4ED16B");
                 SemanticScreenReader.Announce(Result.Text);
-                Task.Delay(200);
+                await Task.Delay(200);
                 await Navigation.PopAsync();
 
             }

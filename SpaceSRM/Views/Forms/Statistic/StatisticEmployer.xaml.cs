@@ -7,13 +7,14 @@ public partial class StatisticEmployer : ContentPage
     StatisticEmployerViewModel _vm;
     public bool IsFirst = true;
     public bool _showDataClicked = false;
+    public int screenWidth;
     public StatisticEmployer(StatisticEmployerViewModel vm)
     {
         InitializeComponent();
         _vm = vm;
         BindingContext = _vm;
 
-
+        screenWidth = ((int)DeviceDisplay.Current.MainDisplayInfo.Width / 3) - 30;
     }
     protected override async void OnAppearing()
     {
