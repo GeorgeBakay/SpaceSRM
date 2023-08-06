@@ -130,7 +130,7 @@
                     Stroke="#548AFE"
                    
                     StrokeShape="RoundRectangle 15,15,15,15">
-                    <Entry ReturnCommand="PasswordEnter" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22" IsPassword="True"  TextColor="White" x:Name="Password"/>
+                    <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="22" IsPassword="True"  TextColor="White" x:Name="Password"/>
                 </Border>
                 
                 
