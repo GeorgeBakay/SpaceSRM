@@ -464,4 +464,41 @@ public partial class AddRecordForm : ContentPage
         }
 
     }
+    private void OnNumberOfCarCompleted(object sender, EventArgs e)
+    {
+        // Отримуємо відправника події, який є першою Entry
+        var entry = (Entry)sender;
+
+        // Шукаємо всі Entry елементи на сторінці
+        var allEntries = FindAllEntryElements();
+
+        // Знаходимо індекс поточного Entry в списку всіх Entry
+        int currentIndex = allEntries.IndexOf(entry);
+
+        // Перевіряємо, чи наступний Entry існує
+        if (currentIndex < allEntries.Count - 1)
+        {
+            // Отримуємо наступний Entry
+            var nextEntry = allEntries[currentIndex + 1];
+
+            // Встановлюємо фокус на наступний Entry
+            nextEntry.Focus();
+        }
+    }
+    private List<Entry> FindAllEntryElements()
+    {
+        var entryElements = new List<Entry>();
+
+        // Додайте сюди всі Entry елементи на вашій сторінці
+        // Наприклад, якщо у вас всі Entry розміщені в StackLayout, можна зробити так:
+        foreach (var element in myStackLayout.Children)
+        {
+            if (element is Entry entry)
+            {
+                entryElements.Add(entry);
+            }
+        }
+
+        return entryElements;
+    }
 }

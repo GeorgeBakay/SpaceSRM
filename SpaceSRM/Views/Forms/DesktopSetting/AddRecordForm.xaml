@@ -22,7 +22,7 @@
         </Style>
     </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout Margin="10,0" HorizontalOptions="Center">
+        <VerticalStackLayout x:Name="myStackLayout" Margin="10,0" HorizontalOptions="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>
@@ -154,28 +154,28 @@
                 </Border>
             </Grid>
             
-            <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Авто"/>
+            <Label  Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Авто"/>
             <Label TextColor="White" Margin="0,10" FontSize="17" Text="Номер знак ТЗ"/>
             <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
 
-                <Entry TextColor="Black" BackgroundColor="White" IsSpellCheckEnabled="False"  Text="{Binding AddRecord.NumberOfCar}"  Placeholder="введіть номер машини">
+                <Entry  Completed="OnNumberOfCarCompleted" AutomationId="0"  ReturnType="Next" TextColor="Black" BackgroundColor="White" IsSpellCheckEnabled="False"  Text="{Binding AddRecord.NumberOfCar}"  Placeholder="введіть номер машини">
                     
                 </Entry>
 
             </Border>
             <Label Margin="0,10" FontSize="17" Text="Марка | Модель"/>
             <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
-                <Entry TextColor="Black"  IsSpellCheckEnabled="False" Text="{Binding AddRecord.Brand}" Placeholder="введіть марку машини"/>
+                <Entry  Completed="OnNumberOfCarCompleted" AutomationId="1" ReturnType="Next" TextColor="Black"  IsSpellCheckEnabled="False" Text="{Binding AddRecord.Brand}" Placeholder="введіть марку машини"/>
             </Border>
                    
             <Label Margin="0,10" FontSize="17" Text="Розмір кузова"/>
             <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
-                <Entry TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodySize}" Placeholder="введіть розмір кузову"/>
+                <Entry  Completed="OnNumberOfCarCompleted" ReturnType="Next" TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodySize}" Placeholder="введіть розмір кузову"/>
             </Border>
 
             <Label Margin="0,10" FontSize="17" Text="Тип кузова"/>
             <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
-                <Entry TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodyType}" Placeholder="введіть тип кузову"/>
+                <Entry  Completed="OnNumberOfCarCompleted" TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodyType}" Placeholder="введіть тип кузову"/>
             </Border>
             <Label Margin="0,10" FontSize="17" Text="Кільксть пального"/>
             <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">

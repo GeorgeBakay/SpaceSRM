@@ -261,7 +261,7 @@ namespace SpaceSRM.ViewModels
             List<Work> workToChart = new List<Work>();
             foreach (Work work in works)
             {
-                if (DateFrom.Date <= work.Record.DateEnd.Date && work.Record.DateEnd.Date <= DateTo.Date && work.Employers.Count != 0 && work.Record.Status == Status.End)
+                if (/*DateFrom.Date <= work.Record.DateEnd.Date && work.Record.DateEnd.Date <= DateTo.Date && */work.Employers.Count != 0 && work.Record.Status == Status.End)
                 {
                     int empSalery = (int)(((work.Price - work.PriceCost) * (work.Service.Procent / 100)) / work.Employers.Count);
                     WorksVisual.Add(new VisualWorksOfEmployer()
@@ -297,11 +297,10 @@ namespace SpaceSRM.ViewModels
             employer.Salaries = employer.Salaries.OrderByDescending(u => u.Date).ToList();
             foreach (Salary salary in employer.Salaries)
             {
-                if (DateFrom.Date <= salary.Date.Date && salary.Date.Date <= DateTo.Date)
-                {
+                
                     TSalaryWithOut -= salary.Value;
                     SalarysVisual.Add(salary);
-                }
+                
             }
             SalaryWithOut = TSalaryWithOut;
             foreach (var work in visualWorks)

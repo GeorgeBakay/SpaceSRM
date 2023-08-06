@@ -25,7 +25,11 @@ public partial class LoginPage : ContentPage
 
         
     }
-
+ 
+    public async void PasswordEnter()
+    {
+        await Login_Clicked();
+    }
     private async void Login_Clicked(object sender, EventArgs e)
     {
         if(User.Text != null && Password.Text != null)

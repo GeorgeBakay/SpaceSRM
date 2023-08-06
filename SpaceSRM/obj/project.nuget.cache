@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EGreoAZ+KJR+AqeRUxhCItYLm3Rg0dYUQjQxsKUllEAQiwZjnzR1rjo5t7BEqxOmZ4KSnSSoYiDs/Xa0nY9eGQ==",
+  "dgSpecHash": "uFw/8TeFKC0KE40rvKLYyM/ZQ0Ig7gXDAYcYAx1DABEhRon5KVwVm4fbBwRK9eu/ZV6/n62wdcuQBfy4KRNDPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\George\\source\\repos\\SpaceSRM\\SpaceSRM\\SpaceSRM.csproj",
   "expectedPackageFiles": [
@@ -204,6 +204,7 @@
     "C:\\Users\\George\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\xcalendar.core\\4.5.0\\xcalendar.core.4.5.0.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\xcalendar.maui\\4.5.1\\xcalendar.maui.4.5.1.nupkg.sha512",
+    "C:\\Users\\George\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\7.0.2\\microsoft.netcore.app.crossgen2.win-x64.7.0.2.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.28\\microsoft.windows.sdk.net.ref.10.0.19041.28.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.2\\microsoft.aspnetcore.app.runtime.win-x64.7.0.2.nupkg.sha512",
     "C:\\Users\\George\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.2\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.2.nupkg.sha512",
