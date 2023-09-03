@@ -2,6 +2,7 @@
 
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Client
     {
 

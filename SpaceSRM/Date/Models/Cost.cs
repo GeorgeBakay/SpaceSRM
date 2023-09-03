@@ -1,5 +1,6 @@
 ﻿namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Cost
     {
         public int Id { get; set; } = -1;

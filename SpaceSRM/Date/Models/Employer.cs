@@ -2,6 +2,24 @@
 
 namespace SpaceSRM.Models
 {
+    enum TypeOfSalary
+    {
+        Regular,
+        Procent,
+        Mix
+    }
+    enum RegularPeriod
+    {
+        Hour,
+        Day,
+        Month,
+    }
+
+
+
+
+
+    [Serializable]
     public class Employer
     {
         
@@ -11,6 +29,7 @@ namespace SpaceSRM.Models
         public string Phone { get; set; } = "";
         public ICollection<Work> Works { get; set; } = new List<Work>();
         public ICollection<Salary> Salaries { get; set; } = new List<Salary>();
+         
       
         public override bool Equals(object obj)
         {

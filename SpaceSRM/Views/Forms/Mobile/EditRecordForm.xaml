@@ -179,6 +179,7 @@
 
             <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Перелік робіт"/>
             <CollectionView
+                HorizontalOptions="FillAndExpand" 
                     SelectionMode="Single"
                     x:Name="CollectionWorks"
                     SelectionChanged="WorksSelectionChanged"
@@ -229,7 +230,7 @@
                                 </VerticalStackLayout>
 
                                 <Border VerticalOptions="Center" Grid.Column="2" Padding="10,5" StrokeThickness="1" Stroke="#548AFE" BackgroundColor="Transparent" StrokeShape="RoundRectangle 10,10,10,10">
-                                    <Label  VerticalTextAlignment="Center" HorizontalOptions="Center"  Text="{Binding Price , Mode=TwoWay}"/>
+                                    <Label VerticalTextAlignment="Center" HorizontalOptions="Center"  Text="{Binding Price , Mode=TwoWay}"/>
                                 </Border>
 
                                 
@@ -290,6 +291,7 @@
             
             
             <CollectionView
+      
                     ItemsSource="{Binding PhotoBeforePrevious}"
                     SelectionMode="Single"
                     HorizontalOptions="Center"
@@ -357,6 +359,7 @@
             </Grid>
             <Label Margin="0,10" FontSize="17" Text="Фото до"/>
             <CollectionView 
+                
                             x:Name="PhotosBeforeCollection"
                             HorizontalOptions="Center"
                             ItemsLayout="VerticalGrid, 3"
@@ -397,6 +400,7 @@
             
             <Label Margin="0,3" FontSize="17" Text="Фото після (що були)"/>
             <CollectionView
+                    
                     ItemsSource="{Binding PhotoAfterPrevious}"
                     SelectionMode="Single"
                     HorizontalOptions="Center"
@@ -468,6 +472,7 @@
             </Grid>
             <Label Margin="0,3" FontSize="17" Text="Фото після"/>
             <CollectionView 
+              
                 SelectionChanged="AfterPhotoSelectionChanged"
                 HorizontalOptions="Center"
                 SelectionMode="Single"
@@ -553,7 +558,7 @@
             <Label Margin="0,10" FontSize="17" Text="Знижка"/>
             <Label TextColor="#FA6D6D" x:Name="DiscountError"></Label>
             <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
-                <Entry Keyboard="Numeric" PropertyChanged="DiscountPropertyChanged" x:Name="DiscountText" Text="{Binding DiscountWork}"  Placeholder="введіть знижку"/>
+                <Entry Keyboard="Numeric" TextColor="Black" PropertyChanged="DiscountPropertyChanged" x:Name="DiscountText" Text="{Binding DiscountWork}"  Placeholder="введіть знижку"/>
             </Border>
             
 

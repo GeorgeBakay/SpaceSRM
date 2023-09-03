@@ -1,5 +1,4 @@
 ﻿
-using Newtonsoft.Json;
 using SpaceSRM.Date.Interface;
 using SpaceSRM.Date.Models;
 using SpaceSRM.Models;
@@ -10,24 +9,55 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 
 
 
 namespace SpaceSRM.Date.Repository
 {
+    public class propertyContractResolver : DefaultJsonTypeInfoResolver
+    {
+        public override JsonTypeInfo GetTypeInfo(Type t, JsonSerializerOptions o)
+        {
+            JsonTypeInfo type = base.GetTypeInfo(t, o);
+
+            if (type.Kind == JsonTypeInfoKind.Object)
+            {
+                foreach (JsonPropertyInfo prop in type.Properties)
+                {
+                    prop.Name = prop.Name.ToUpperInvariant();
+                }
+            }
+
+            return type;
+        }
+    }
     public class HttpClientRepository : IHttpClientSend
     {
         private HttpClient _httpClient;
         private static string _token = "";
-        
+        private static JsonSerializerOptions options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            TypeInfoResolver = new propertyContractResolver(),
+            PropertyNameCaseInsensitive = true ,// Якщо ви хочете ігнорувати регістр імен властивостей
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters = { new JsonStringEnumConverter() }
+        };
+        private static string phoneNumberOfUser = "";
         public HttpClientRepository()
         {
-            
-            
-            
-            _httpClient = new HttpClient();
+            var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback =
+            HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+            };
+
+
+            _httpClient = new HttpClient(handler);
             //string connection = (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS) ? "https://localhost:5555" : "https://localhost:7173";
             string connection = (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS) ? "https://user29121.realhost-free.net" : "https://user29121.realhost-free.net";
             _httpClient.BaseAddress = new Uri(connection);
@@ -41,7 +71,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/AddClient", JsonContent.Create(client));
+                var clientJson = JsonSerializer.Serialize(client, options);
+                var content = new StringContent(clientJson, Encoding.UTF8, "application/json");
+         
+                var response = await _httpClient.PostAsync("/api/Space/AddClient", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -62,7 +95,11 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/AddEmployer", JsonContent.Create(employer));
+                var employerJson = JsonSerializer.Serialize(employer, options);
+                var content = new StringContent(employerJson, Encoding.UTF8, "application/json");
+    
+
+                var response = await _httpClient.PostAsync("/api/Space/AddEmployer", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -83,7 +120,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/AddService", JsonContent.Create(service));
+                var serviceJson = JsonSerializer.Serialize(service, options);
+                var content = new StringContent(serviceJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/api/Space/AddService", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -105,7 +144,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/AddSetService", JsonContent.Create(setService));
+                var setServiceJson = JsonSerializer.Serialize(setService, options);
+                var content = new StringContent(setServiceJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/api/Space/AddSetService", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -125,8 +166,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var json = JsonContent.Create(record);
-                var response = await _httpClient.PostAsync("/api/Space/AddRecord", json);
+                string recordJson = JsonSerializer.Serialize(record,options);
+                var content = new StringContent(recordJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/api/Space/AddRecord", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -150,8 +192,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var json = JsonContent.Create(photo);
-                var response = await _httpClient.PostAsync($"/api/Space/AddPhoto/{Id}", json);
+                var photoJson = JsonSerializer.Serialize(photo, options);
+                var content = new StringContent(photoJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync($"/api/Space/AddPhoto/{Id}", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return await response.Content.ReadAsStringAsync();
@@ -174,8 +217,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var json = JsonContent.Create(cost);
-                var response = await _httpClient.PostAsync("/api/Space/AddCost", json);
+                var costJson = JsonSerializer.Serialize(cost, options);
+                var content = new StringContent(costJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/api/Space/AddCost", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -201,8 +245,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var json = JsonContent.Create(salary);
-                var response = await _httpClient.PostAsync("/api/Space/AddSalary", json);
+                var salaryJson = JsonSerializer.Serialize(salary, options);
+                var content = new StringContent(salaryJson, Encoding.UTF8, "application/json");
+       
+                var response = await _httpClient.PostAsync("/api/Space/AddSalary", content);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -421,7 +467,9 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditClient", JsonContent.Create(client));
+                var clientJson = JsonSerializer.Serialize(client, options);
+                var content = new StringContent(clientJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/api/Space/EditClient", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -444,7 +492,11 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditService", JsonContent.Create(service));
+                var serviceJson = JsonSerializer.Serialize(service, options);
+                var content = new StringContent(serviceJson, Encoding.UTF8, "application/json");
+
+
+                var response = await _httpClient.PostAsync("/api/Space/EditService", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -468,7 +520,11 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditSetService", JsonContent.Create(setService));
+
+                var setServiceJson = JsonSerializer.Serialize(setService, options);
+                var content = new StringContent(setServiceJson, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/Space/EditSetService", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -491,7 +547,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditEmployer", JsonContent.Create(employer));
+                var employerJson = JsonSerializer.Serialize(employer, options);
+                var content = new StringContent(employerJson, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/Space/EditEmployer", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -513,7 +572,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditRecord", JsonContent.Create(record));
+                var recordJson = JsonSerializer.Serialize(record, options);
+                var content = new StringContent(recordJson, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/Space/EditRecord", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -535,7 +597,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditCost", JsonContent.Create(cost));
+                var costJson = JsonSerializer.Serialize(cost, options);
+                var content = new StringContent(costJson, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/Space/EditCost", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -557,7 +622,10 @@ namespace SpaceSRM.Date.Repository
         {
             try
             {
-                var response = await _httpClient.PostAsync("/api/Space/EditSalary", JsonContent.Create(salary));
+                var salaryJson = JsonSerializer.Serialize(salary, options);
+                var content = new StringContent(salaryJson, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/Space/EditSalary", content);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return "ok";
@@ -584,7 +652,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetClientsQuick");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Client>>(json);
+                var result = JsonSerializer.Deserialize<List<Client>>(json, options);
+
                 return result;
             }
             catch 
@@ -598,7 +667,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetClients");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Client>>(json);
+                var result = JsonSerializer.Deserialize<List<Client>>(json, options);
+              
                 return result;
             }
             catch 
@@ -612,7 +682,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetEmployersQuick");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Employer>>(json);
+                var result = JsonSerializer.Deserialize<List<Employer>>(json, options);
+             
                 return result;
             }
             catch 
@@ -626,7 +697,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetEmployers");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Employer>>(json);
+                var result = JsonSerializer.Deserialize<List<Employer>>(json, options);
+               
                 return result;
             }
             catch 
@@ -641,7 +713,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetServicesQuick");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Service>>(json);
+                var result = JsonSerializer.Deserialize<List<Service>>(json, options);
+                
                 return result;
             }
             catch 
@@ -655,7 +728,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetServices");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Service>>(json);
+                var result = JsonSerializer.Deserialize<List<Service>>(json, options);
+
                 return result;
             }
             catch 
@@ -670,7 +744,7 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetSetServices");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<SetService>>(json);
+                var result = JsonSerializer.Deserialize<List<SetService>>(json,options);
                 return result;
             }
             catch 
@@ -685,8 +759,16 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetRecordsQuick");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Record>>(json);
-                return result;
+                byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+                using (MemoryStream stream = new MemoryStream(jsonBytes))
+                {
+                    // Асинхронна десеріалізація з Stream
+                    var result = await JsonSerializer.DeserializeAsync<List<Record>>(stream, options);
+                    return result;
+                    // Ваш код для подальшої роботи з результатом
+                }
+                
+                
             }
             catch 
             {
@@ -699,7 +781,8 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetRecords");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Record>>(json);
+                var result = JsonSerializer.Deserialize<List<Record>>(json, options);
+
                 return result;
             }
             catch 
@@ -714,7 +797,7 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync($"/api/Space/GetRecord/{Id}");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<Record>(json);
+                var result = JsonSerializer.Deserialize<Record>(json, options);
                 return result;
             }
             catch
@@ -751,7 +834,7 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetWorks");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Work>>(json);
+                var result = JsonSerializer.Deserialize<List<Work>>(json, options);
                 return result;
             }
             catch 
@@ -768,7 +851,7 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync("/api/Space/GetCosts");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Cost>>(json);
+                var result = JsonSerializer.Deserialize<List<Cost>>(json, options);
                 return result;
             }
             catch 
@@ -782,21 +865,22 @@ namespace SpaceSRM.Date.Repository
             {
                 var response = await _httpClient.GetAsync($"/api/Space/GetSalarysEmployer/{employerId}");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Salary>>(json);
+                var result = JsonSerializer.Deserialize<List<Salary>>(json, options);
                 return result;
             }
             catch 
             {
-                return new List<Salary>();
+                 return new List<Salary>();
             }
         }
         public async Task<List<Salary>> GetSalarys()
         {
             try
             {
+
                 var response = await _httpClient.GetAsync($"/api/Space/GetSalarys");
                 string json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<Salary>>(json);
+                var result = JsonSerializer.Deserialize<List<Salary>>(json, options);
                 return result;
             }
             catch
@@ -806,27 +890,31 @@ namespace SpaceSRM.Date.Repository
         }
 
         //Логінізація
-        public async Task<bool> Login(User user)
+        public async Task<string> Login(User user)
         {
             try
             {
-                var response = await _httpClient.PostAsync($"/Login", JsonContent.Create(user));
+                var userJson = JsonSerializer.Serialize(user,options);
+                var content = new StringContent(userJson, Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("/Login", content);
+
+                
                
                 if(response.StatusCode == HttpStatusCode.OK)
                 {
                     var tokenStr = await response.Content.ReadAsStringAsync();
                     _token = tokenStr.Trim('"');
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-                    return true;
+                    return "true";
                     
                 }
 
-                
-                return false;
+
+                return "в try" + response.RequestMessage.ToString();
             }
-            catch 
+            catch(Exception ex)
             {
-                return false;
+                return "в catch" +  ex.Message.ToString();
             }
         }
        

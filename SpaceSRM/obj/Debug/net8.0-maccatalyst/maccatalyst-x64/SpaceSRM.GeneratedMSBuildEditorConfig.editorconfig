@@ -1,0 +1,269 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-maccatalyst
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SpaceSRM
+build_property.ProjectDir = C:\Users\George\source\repos\SpaceSRM\SpaceSRM\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/AppShellDesktop.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.AppShellDesktop.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShellDesktop.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShellDesktop.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/AppShellMobile.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.AppShellMobile.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShellMobile.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShellMobile.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/CustomControls/CalendarView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.CustomControls.CalendarView.xaml
+build_metadata.AdditionalFiles.TargetPath = CustomControls\CalendarView.xaml
+build_metadata.AdditionalFiles.RelativePath = CustomControls\CalendarView.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = LoginPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Calendar.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Calendar.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Calendar.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Calendar.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Costs.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Costs.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Costs.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Costs.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/AddClientForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.AddClientForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\AddClientForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\AddClientForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/AddEmployerForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.AddEmployerForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\AddEmployerForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\AddEmployerForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/AddRecordForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.AddRecordForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\AddRecordForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\AddRecordForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/AddServiceForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.AddServiceForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\AddServiceForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\AddServiceForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/AddSetServiceForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.AddSetServiceForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\AddSetServiceForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\AddSetServiceForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/EditClientPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.EditClientPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\EditClientPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\EditClientPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/EditEmployerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.EditEmployerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\EditEmployerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\EditEmployerPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/EditServicePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.EditServicePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\EditServicePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\EditServicePage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/DesktopSetting/EditSetServicePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.DesktopSetting.EditSetServicePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\DesktopSetting\EditSetServicePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\DesktopSetting\EditSetServicePage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/AddWorkForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.AddWorkForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\AddWorkForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\AddWorkForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/CostPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.CostPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\CostPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\CostPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditClientForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditClientForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditClientForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditClientForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditEmployerForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditEmployerForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditEmployerForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditEmployerForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditPhoto.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditPhoto.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditPhoto.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditPhoto.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditRecordForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditRecordForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditRecordForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditRecordForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditServiceForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditServiceForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditServiceForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditServiceForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditSetServiceForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditSetServiceForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditSetServiceForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditSetServiceForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/EditWorkForm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.EditWorkForm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\EditWorkForm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\EditWorkForm.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/ShowClientPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.ShowClientPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\ShowClientPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\ShowClientPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/ShowEmployerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.ShowEmployerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\ShowEmployerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\ShowEmployerPage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/ShowServicePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.ShowServicePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\ShowServicePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\ShowServicePage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Mobile/ShowSetServivePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Mobile.ShowSetServivePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Mobile\ShowSetServivePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Mobile\ShowSetServivePage.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/StatisticClient.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.StatisticClient.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\StatisticClient.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\StatisticClient.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/StatisticCosts.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.StatisticCosts.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\StatisticCosts.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\StatisticCosts.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/StatisticEmployer.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.StatisticEmployer.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\StatisticEmployer.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\StatisticEmployer.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/StatisticWorks.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.StatisticWorks.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\StatisticWorks.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\StatisticWorks.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/ViewClients.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.ViewClients.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\ViewClients.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\ViewClients.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/ViewEmployers.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.ViewEmployers.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\ViewEmployers.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\ViewEmployers.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Forms/Statistic/ViewRecords.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Forms.Statistic.ViewRecords.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Forms\Statistic\ViewRecords.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Forms\Statistic\ViewRecords.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Records.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Records.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Records.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Records.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Settings.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Settings.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Settings.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Settings.xaml
+
+[C:/Users/George/source/repos/SpaceSRM/SpaceSRM/Views/Statistic.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SpaceSRM.Views.Statistic.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Statistic.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Statistic.xaml

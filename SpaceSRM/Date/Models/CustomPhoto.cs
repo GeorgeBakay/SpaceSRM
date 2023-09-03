@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceSRM.Date.Models
 {
+    [Serializable]
     public class CustomPhoto
     {
         

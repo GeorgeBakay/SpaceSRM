@@ -189,7 +189,7 @@ namespace SpaceSRM.ViewModels
             {
                 LabelsRotation = LiveCharts.TangentAngle,
                 Labels = new ObservableCollection<string>(),
-                TextSize = 30,
+                TextSize = 3,
                 LabelsBackground = LiveChartsCore.Drawing.LvcColor.FromRGB(25,25,25),
                 LabelsPaint =new SolidColorPaint { Color = SKColors.White }
             }
@@ -279,7 +279,7 @@ namespace SpaceSRM.ViewModels
                     workToChart.Add(work);
                     SaleryT = SaleryT + empSalery;
                     ProfitT = ProfitT + work.Price;
-                    WorksCountT = WorksCountT + 1;
+                    WorksCountT++;
                     if (conteins)
                     {
                         visualWorks[work.Service.Name] = visualWorks[work.Service.Name] + work.Price;

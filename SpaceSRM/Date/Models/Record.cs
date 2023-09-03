@@ -1,6 +1,10 @@
 ﻿
+using System.Text.Json.Serialization;
+
 namespace SpaceSRM.Models
 {
+
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Status
     {
         Wait,
@@ -24,6 +28,7 @@ namespace SpaceSRM.Models
     //{
     //    S, M, L, XL, XXL,
     //}
+    [Serializable]
     public class Record
     {
 

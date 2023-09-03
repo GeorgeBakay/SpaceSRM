@@ -4,6 +4,7 @@ using SpaceSRM.Models;
 
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class SetService
     {
         public int Id { get; set; }

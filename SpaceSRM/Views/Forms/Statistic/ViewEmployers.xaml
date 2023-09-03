@@ -63,15 +63,18 @@
 
                             </Grid>
                             <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Normal" />
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="#4ED16B" />
-                                        </VisualState.Setters>
-                                    </VisualState>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                            </VisualState.Setters>
+                                        </VisualState>
 
-                                </VisualStateGroup>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                                
                             </VisualStateManager.VisualStateGroups>
                         </Border>
 

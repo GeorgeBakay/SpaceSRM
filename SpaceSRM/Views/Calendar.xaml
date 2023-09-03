@@ -22,7 +22,8 @@
                 Grid.Row="0"/>
             <Border
                 Grid.Row="1"
-                Margin="10"
+                Margin="5"
+
                 HorizontalOptions="Fill" 
                 BackgroundColor="#D9D9D9"
                 StrokeShape="RoundRectangle 15,15,15,15"
@@ -32,7 +33,7 @@
 
             </Border>
 
-            <ScrollView Grid.Row="2">
+            <ScrollView Grid.Row="2" HorizontalOptions="FillAndExpand" Padding="0">
                 <CollectionView Margin="5" 
                             SelectionMode="Single" 
                             SelectionChanged="DataRecords_SelectionChanged"

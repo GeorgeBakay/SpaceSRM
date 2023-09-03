@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Maui.LifecycleEvents;
-using SimpleToolkit.Core;
-using SimpleToolkit.SimpleShell;
 using SpaceSRM.Date.Interface;
 using SpaceSRM.Date.Repository;
 using SpaceSRM.ViewModels;
@@ -11,7 +9,6 @@ using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 using SkiaSharp.Views.Maui.Controls.Hosting;
-using CalendarView.MAUI;
 namespace SpaceSRM;
 
 public static class MauiProgram

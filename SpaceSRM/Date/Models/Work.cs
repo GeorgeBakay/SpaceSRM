@@ -1,8 +1,8 @@
-﻿
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Work
     {
      
@@ -18,6 +18,9 @@ namespace SpaceSRM.Models
         public int TruePrice { get; set; }
         public string DescriptionCost { get; set; } = " ";
         public int PriceCost { get; set; } = 0;
+
+        //нові поля 
+        
 
     }
 }

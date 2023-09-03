@@ -6,7 +6,7 @@ using SpaceSRM.ViewModels;
 
 namespace SpaceSRM.Views.Forms.DesktopSetting;
 
-
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class AddRecordForm : ContentPage
 {
     RecordsViewModel _vm = new RecordsViewModel();

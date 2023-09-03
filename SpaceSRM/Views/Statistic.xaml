@@ -15,14 +15,15 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <Border
+            <Frame
                 Grid.Row="0"
                 Margin="10,5,10,10" 
                 HorizontalOptions="Fill" 
                 HeightRequest="260"
                 BackgroundColor="#1a1919"
-                StrokeShape="RoundRectangle 15,15,15,15"
-                StrokeThickness="0"
+                CornerRadius="15"
+                Padding="0"
+                BorderColor="Transparent"
                 
             >
                 
@@ -39,7 +40,7 @@
 
                 </Grid>
                
-            </Border>
+            </Frame>
         <ProgressBar IsVisible="{Binding VisableBar}" 
                      HeightRequest="5"
                      Grid.Row="0" 
@@ -47,7 +48,7 @@
                      HorizontalOptions="Center" 
                      Progress="{Binding ProgressBar}" 
                      ProgressColor="#548AFE" />
-        <ScrollView HorizontalOptions="Fill"  Grid.Row="1">
+        <ScrollView HorizontalOptions="FillAndExpand" Padding="0"  Grid.Row="1">
                 <Grid ColumnSpacing="10" RowSpacing="10" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>

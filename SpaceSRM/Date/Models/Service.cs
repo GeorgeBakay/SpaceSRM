@@ -1,6 +1,7 @@
 ﻿
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Service
     {
         public int Id { get; set; }

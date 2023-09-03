@@ -29,7 +29,7 @@ public partial class StatisticWorks : ContentPage
 
         base.OnAppearing();
     }
-    protected override async void OnDisappearing()
+    protected override  void OnDisappearing()
     {
         
         

@@ -54,7 +54,7 @@ public partial class EditPhoto : ContentPage
                 }
 
                 // Вивести повідомлення, що зображення було успішно збережено
-                await App.Current.MainPage.DisplayAlert("Успіх", "Зображення було збережено", "OK");
+                await App.Current.MainPage.DisplayAlert("Успіх", "Зображення було збережено" + $"{filePath}", "OK");
             }
             else
             {

@@ -48,12 +48,11 @@ namespace SpaceSRM.ViewModels
         {
             new ColumnSeries<DateTimePoint>
             {
-                TooltipLabelFormatter = (chartPoint) =>
-                    $"{new DateTime((long) chartPoint.SecondaryValue):yyyy MM dd}: {chartPoint.PrimaryValue}",
+               
                 Values = new ObservableCollection<DateTimePoint>(),
 
                 MaxBarWidth = double.MaxValue,
-                DataLabelsSize = 10,
+                DataLabelsSize = 3,
                 Fill = new SolidColorPaint(new SKColor(84,138,254)),
                 
             }
@@ -62,14 +61,14 @@ namespace SpaceSRM.ViewModels
         {
             new Axis
             {
-                TextSize = 20,
-                Labeler = value => new DateTime((long) value).ToString("yyyy MM dd"),
+                TextSize = 7,
+                Labeler = value => value.AsDate().ToString("MMMM dd"),
                 LabelsRotation = 50,
                 UnitWidth = TimeSpan.FromDays(1).Ticks, 
                 MinStep = TimeSpan.FromDays(1).Ticks,
 
                 MaxLimit = DateTime.Now.Ticks,
-                MinLimit = DateTime.Now.Ticks -TimeSpan.FromDays(15).Ticks
+                MinLimit = DateTime.Now.Ticks -TimeSpan.FromDays(10).Ticks
             }
         };
 

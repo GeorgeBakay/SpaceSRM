@@ -7,11 +7,11 @@
              Title="EditServicePage">
     <ContentPage.Resources>
         <Style TargetType="Entry">
-            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
             <Style.Triggers>
 
                 <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                    <Setter Property="TextColor" Value="Black" />
+                    
                     <Setter Property="PlaceholderColor" Value="Gray" />
                 </Trigger>
                 <Trigger TargetType="Entry" Property="IsFocused" Value="False">

@@ -38,7 +38,7 @@
                 IsRunning="{Binding IsBusy}">
                 
             </ActivityIndicator>
-            <ScrollView Grid.Row="1">
+        <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="0">
             <CollectionView Margin="5" 
                             SelectionMode="Single" 
                             SelectedItem="{Binding SelectRecord}"
@@ -48,6 +48,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Padding="2,15" Margin="0,5" Stroke="{Binding ColorOfStatus}" BackgroundColor="#121111"
+                               
                                 StrokeShape="RoundRectangle 10,10,10,10">
                             <Grid >
                                 <Grid.ColumnDefinitions>
@@ -61,16 +62,16 @@
                                 </Grid.ColumnDefinitions>
                                 <Label VerticalTextAlignment="Center" FontSize="12" HorizontalTextAlignment="Center" Text="{Binding Client.Name}" Grid.Column="0"></Label>
                                 <Label VerticalTextAlignment="Center" FontSize="12" HorizontalTextAlignment="Center" Text="{Binding Brand}" Grid.Column="1"></Label>
-                                <Label VerticalTextAlignment="Center" FontSize="12" HorizontalTextAlignment="Center" Text="{Binding DateStart}" Grid.Column="2"></Label>
+                                <Label VerticalTextAlignment="Center" FontSize="12" HorizontalTextAlignment="Center" Text="{Binding DateStart,StringFormat='{0:dd.MM - hh:mm}'}" Grid.Column="2"></Label>
                                 <Border
-                                    Padding="10"
+                                    Padding="5"
                                     Grid.Column="3"
                                         StrokeThickness="1" 
                                         HorizontalOptions="Center"
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         BackgroundColor="Transparent"
                                         Stroke ="{Binding ColorOfStatus}">
-                                    <Label FontSize="10" HorizontalTextAlignment="Center" Text="{Binding StatusString}" TextColor="{Binding ColorOfStatus}" ></Label>
+                                    <Label FontSize="10" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Text="{Binding StatusString}" TextColor="{Binding ColorOfStatus}" ></Label>
                                 </Border>
                                 <Label VerticalTextAlignment="Center" FontSize="13" HorizontalTextAlignment="Center" Text="{Binding Sum}" Grid.Column="4"></Label>
                             </Grid>

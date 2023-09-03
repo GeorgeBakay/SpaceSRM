@@ -4,7 +4,8 @@ using SpaceSRM.Date.Models;
 using SpaceSRM.Date.Repository;
 using SpaceSRM.Models;
 using SpaceSRM.ViewModels;
-using System.Reflection.Metadata.Ecma335;   
+using System.Reflection.Metadata.Ecma335;
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class EditRecordForm : ContentPage
 {
     RecordsViewModel _vm = new RecordsViewModel();
@@ -414,7 +415,7 @@ public partial class EditRecordForm : ContentPage
                 GasCount= thisRecord.GasCount,
                 SendMessage = thisRecord.SendMessage,
             };
-            int RecordId;
+
             List<Photo> photosToSend = thisRecord.Photos.ToList();
             string response = await recordConnection.EditRecord(recordOutPhoto);
             int recordId = _vm.AddRecord.Id;

@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Photo
     {
         [Key]
@@ -15,6 +16,7 @@ namespace SpaceSRM.Models
         public PhotoType Type { get; set; }
 
     }
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum PhotoType
     {
         Before,

@@ -1,7 +1,6 @@
 
 using SpaceSRM.Date.Interface;
 using SpaceSRM.Date.Repository;
-
 namespace SpaceSRM.Views;
 
 public partial class LoginPage : ContentPage
@@ -34,17 +33,15 @@ public partial class LoginPage : ContentPage
             await LoginForm.FadeTo(0, 300, Easing.CubicOut);
             string userName = User.Text;
             string password = Password.Text;
-            bool isValid = await _login.Login(userName, password);
-            if (isValid)
+            string isValid = await _login.Login(userName, password);
+            if (isValid == "true")
             {
                 
                 await round1.ScaleTo(40, 1000,Easing.CubicIn);
 
 
-
-
-                await SecureStorage.Default.SetAsync("userName", userName);
-                await SecureStorage.Default.SetAsync("password", password);
+                SecureStorage.Default.SetAsync("userName", userName);
+                SecureStorage.Default.SetAsync("password", password);
 
                 //await Navigation.PushAsync(new AppShellMobile());
                 Application.Current.MainPage = new AppShellMobile();
@@ -52,7 +49,7 @@ public partial class LoginPage : ContentPage
             else
             {
                 await LoginForm.FadeTo(1, 300, Easing.CubicOut);
-                await DisplayAlert("Помилка логінізації", "пароль або логін введені невірно, також пеервірте підключення до інтернету", "Знову");
+                await DisplayAlert("Помилка логінізації", "пароль або логін введені невірно, також перевірте підключення до інтернету" + $"Помилка: {isValid}", "Знову");
             }
         }
         else

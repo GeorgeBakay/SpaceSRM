@@ -8,6 +8,6 @@ namespace SpaceSRM.Date.Interface
 {
     internal interface ILogin
     {
-        public Task<bool> Login(string userName, string password);
+        public Task<string> Login(string userName, string password);
     }
 }

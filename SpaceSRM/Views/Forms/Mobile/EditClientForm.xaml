@@ -7,11 +7,10 @@
              Title="Редагування клієнта">
     <ContentPage.Resources>
         <Style TargetType="Entry">
-            <Setter Property="TextColor" Value="White"></Setter>
+            <Setter Property="TextColor" Value="Black"></Setter>
             <Style.Triggers>
 
                 <Trigger TargetType="Entry" Property="IsFocused" Value="True">
-                    <Setter Property="TextColor" Value="Black" />
                     <Setter Property="PlaceholderColor" Value="Gray" />
                 </Trigger>
                 <Trigger TargetType="Entry" Property="IsFocused" Value="False">
@@ -24,16 +23,16 @@
         <ImageButton Margin="0,10" BackgroundColor="Transparent" Source="back.png" Clicked="OnBack" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
 
         <Label Margin="0,10" FontSize="17"  Text="Ім'я клієнта"/>
-        <Border  Padding="10,5" StrokeThickness="1" Stroke="#548AFE" BackgroundColor="#172242" StrokeShape="RoundRectangle 10,10,10,10">
+        <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
             <Entry  Text="{Binding ThisName}" x:Name="Name"/>
         </Border>
         <Label Margin="0,10" FontSize="17" Text="Призвіще"/>
-        <Border Padding="10,5" StrokeThickness="1" Stroke="#548AFE" BackgroundColor="#172242" StrokeShape="RoundRectangle 10,10,10,10">
+        <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
             <Entry Text="{Binding ThisSurName}" x:Name="Type" />
         </Border>
 
         <Label Margin="0,10" FontSize="17" Text="Номер телефону"/>
-        <Border Padding="10,5" StrokeThickness="1" Stroke="#548AFE" BackgroundColor="#172242" StrokeShape="RoundRectangle 10,10,10,10">
+        <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
             <Entry Text="{Binding ThisPhone}" BackgroundColor="#172242" x:Name="Price"  />
         </Border>
 

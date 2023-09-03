@@ -2,6 +2,7 @@
 
 namespace SpaceSRM.Models
 {
+    [Serializable]
     public class Salary
     {
         public int Id { get; set; } = -1;

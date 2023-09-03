@@ -64,7 +64,7 @@ namespace SpaceSRM.Date.Interface
         public Task<List<Salary>> GetSalarysEmployer(int employerId);
         public Task<List<Salary>> GetSalarys();
         //Логінізація
-        public Task<bool> Login(User user);
+        public Task<string> Login(User user);
 
     }
 }

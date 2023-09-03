@@ -40,12 +40,11 @@
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:CalendarModel">
-                <Border 
-                    StrokeThickness="3"
-                    StrokeShape="RoundRectangle 30,30,30,30" 
-                         Stroke="#AFAFAF" 
-                         WidthRequest="60"
-                         HeightRequest="60"
+                <Frame
+                        CornerRadius="30"
+                          BorderColor ="#AFAFAF"
+                         WidthRequest="50"
+                         HeightRequest="50"
                          BackgroundColor="#AFAFAF"
                          Padding="0"
                          >
@@ -96,30 +95,30 @@
                             </Border.Triggers>
                         </Border>
                     </VerticalStackLayout>
-                    <Border.Triggers>
-                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="True">
-                            <Setter Property="Stroke" Value="#4ED16B"/>
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCurrentDate}" Value="True">
+                            <Setter Property="BorderColor" Value="#4ED16B"/>
                             
                         </DataTrigger>
-                        <DataTrigger TargetType="Border" Binding="{Binding IsCalendar}" Value="True">
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCalendar}" Value="True">
                       
                             <Setter Property="HeightRequest" Value="50"/>
                             <Setter Property="WidthRequest" Value="50"/>
                         </DataTrigger>
-                        <DataTrigger TargetType="Border" Binding="{Binding IsCalendar}" Value="False">
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCalendar}" Value="False">
                             <Setter Property="HeightRequest" Value="60"/>
                             <Setter Property="WidthRequest" Value="60"/>
                         </DataTrigger>
-                        <DataTrigger TargetType="Border" Binding="{Binding IsCurrentDate}" Value="False">
-                            <Setter Property="Stroke" Value="#AFAFAF"/>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCurrentDate}" Value="False">
+                            <Setter Property="BorderColor" Value="#AFAFAF"/>
                            
                         </DataTrigger>
-                    </Border.Triggers>
-                    <Border.GestureRecognizers>
+                    </Frame.Triggers>
+                    <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference this},Path=CurrentDateCommand}"
                                               CommandParameter="{Binding .}"/>
-                    </Border.GestureRecognizers>
-                </Border>
+                    </Frame.GestureRecognizers>
+                </Frame>
                 
             </DataTemplate>
         </CollectionView.ItemTemplate>

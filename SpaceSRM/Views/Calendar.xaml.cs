@@ -17,8 +17,7 @@ public partial class Calendar : ContentPage
     protected override async void OnAppearing()
 	{
 		await Task.Delay(300);
-		_vm.LoadingData();
-        await Task.Delay(100);
+		await _vm.LoadingData();
         cal.ActionDates = _vm.GetActionDates();
         
         if (IsFirst)
