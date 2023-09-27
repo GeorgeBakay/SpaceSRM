@@ -79,6 +79,7 @@
                                     <Border 
                                         Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="2"
                                         Margin="10" 
+                                        Padding="2"
                                         StrokeThickness="1"
                                         Stroke="LightGray"
                                         BackgroundColor="LightGray"

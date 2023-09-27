@@ -189,13 +189,14 @@ namespace SpaceSRM.ViewModels
             {
                 LabelsRotation = LiveCharts.TangentAngle,
                 Labels = new ObservableCollection<string>(),
-                TextSize = 3,
+                TextSize = 20,
                 LabelsBackground = LiveChartsCore.Drawing.LvcColor.FromRGB(25,25,25),
                 LabelsPaint =new SolidColorPaint { Color = SKColors.White }
             }
         };
         public ObservableCollection<ISeries> SeriesProfit { get; set; } = new ObservableCollection<ISeries>
         {
+
             new LineSeries<DateTimePoint>
             {
                 TooltipLabelFormatter = (chartPoint) =>

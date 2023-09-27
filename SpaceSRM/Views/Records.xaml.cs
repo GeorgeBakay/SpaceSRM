@@ -59,4 +59,12 @@ public partial class Records : ContentPage
 
 
     }
+
+    private async void RefreshView_Refreshing(object sender, EventArgs e)
+    {
+        var Sender = sender as RefreshView;
+        _vm.Records = new System.Collections.ObjectModel.ObservableCollection<Models.Record>();
+        await _vm.LoadingDataRecords();
+        Sender.IsRefreshing = false;
+    }
 }

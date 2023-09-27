@@ -41,7 +41,9 @@
                 </Grid>
                
             </Frame>
-        <ProgressBar IsVisible="{Binding VisableBar}" 
+        <ProgressBar
+            
+            IsVisible="{Binding VisableBar}" 
                      HeightRequest="5"
                      Grid.Row="0" 
                      WidthRequest="300" 

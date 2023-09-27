@@ -102,7 +102,7 @@
                         BackgroundColor="#1a1919"
                         >
                     
-                    <ScrollView  HorizontalOptions="Fill">
+                    <RefreshView  HorizontalOptions="Fill">
 
                         <CollectionView
                             RemainingItemsThreshold="5"
@@ -139,7 +139,7 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </ScrollView>
+                    </RefreshView>
                 </Border>
                
                 <Border Grid.Column="1" Grid.Row="0"

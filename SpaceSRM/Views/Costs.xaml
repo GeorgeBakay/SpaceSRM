@@ -32,7 +32,7 @@
                 IsRunning="{Binding IsBusy}">
 
         </ActivityIndicator>
-        <ScrollView Margin="5 ,70, 5, 0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill"  Grid.Row="0">
+        <ScrollView Margin="0 ,70, 0, 0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill"  Grid.Row="0">
 
             <CollectionView 
                             Margin="5"
@@ -45,7 +45,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
-                            Padding="0,10"
+                            Padding="5, 15"
                                 Margin="0,5"
                                 BackgroundColor="Transparent"
                                 Stroke="#548AFE"

@@ -127,7 +127,7 @@ namespace SpaceSRM.ViewModels
         };
 
 
-        public async void LoadingData()
+        public async Task LoadingData()
         {
             works = await recordConnection.GetWorks();
             salarys = await salaryConnection.GetSalarys();

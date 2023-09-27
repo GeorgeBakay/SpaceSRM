@@ -15,7 +15,7 @@ public partial class StatisticCosts : ContentPage
     protected override async void OnAppearing()
     {
         await Task.Delay(300);
-        _vm.LoadingData();
+        await _vm.LoadingData();
         if (IsFirst)
         {
             await Task.Delay(500);

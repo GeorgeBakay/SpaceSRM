@@ -38,7 +38,7 @@
                 IsRunning="{Binding IsBusy}">
                 
             </ActivityIndicator>
-        <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="0">
+        <RefreshView  Refreshing="RefreshView_Refreshing"  Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="0">
             <CollectionView Margin="5" 
                             SelectionMode="Single" 
                             SelectedItem="{Binding SelectRecord}"
@@ -47,7 +47,7 @@
                             x:Name="DataService">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Padding="2,15" Margin="0,5" Stroke="{Binding ColorOfStatus}" BackgroundColor="#121111"
+                        <Border Padding="2,15" Margin="5, 2" Stroke="{Binding ColorOfStatus}" BackgroundColor="#121111"
                                
                                 StrokeShape="RoundRectangle 10,10,10,10">
                             <Grid >
@@ -91,7 +91,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
+        </RefreshView>
         <Border     Grid.Row="1"
                     HorizontalOptions="End"
                     VerticalOptions="End"

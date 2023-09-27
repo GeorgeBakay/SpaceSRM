@@ -374,7 +374,7 @@ public partial class EditRecordForm : ContentPage
     {
         List<Work> worksToRecord = _vm.WorksData;
         Record thisRecord = _vm.AddRecord;
-        if (thisRecord.Works == null || thisRecord.Works.Count == 0)
+        if (worksToRecord == null || worksToRecord.Count == 0)
         {
             Result.TextColor = Color.FromArgb("#FA6D6D");
             Result.Text = "Ви не вибрали перелік робіт";

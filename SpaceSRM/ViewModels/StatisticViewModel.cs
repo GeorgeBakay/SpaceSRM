@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using LiveChartsCore;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView;
@@ -43,48 +44,46 @@ namespace SpaceSRM.ViewModels
 
 
         //For Modeling Chart
-          //Chart Record
-        public ObservableCollection<ISeries> SeriesRecord { get; set; } = new ObservableCollection<ISeries>
-        {
+        //Chart Record
+        public ObservableCollection<ISeries> SeriesRecord { get; set; } = new ObservableCollection<ISeries>{
             new ColumnSeries<DateTimePoint>
             {
-               
+
                 Values = new ObservableCollection<DateTimePoint>(),
 
                 MaxBarWidth = double.MaxValue,
                 DataLabelsSize = 3,
                 Fill = new SolidColorPaint(new SKColor(84,138,254)),
-                
+
             }
         };
         public Axis[] XAxes { get; set; } =
         {
-            new Axis
+           new Axis
             {
-                TextSize = 7,
-                Labeler = value => value.AsDate().ToString("MMMM dd"),
+                TextSize = 20,
+                Labeler = value => new DateTime((long) value).ToString("yyyy MM dd"),
                 LabelsRotation = 50,
-                UnitWidth = TimeSpan.FromDays(1).Ticks, 
+                UnitWidth = TimeSpan.FromDays(1).Ticks,
                 MinStep = TimeSpan.FromDays(1).Ticks,
-
-                MaxLimit = DateTime.Now.Ticks,
-                MinLimit = DateTime.Now.Ticks -TimeSpan.FromDays(10).Ticks
+                Position = LiveChartsCore.Measure.AxisPosition.End,
             }
         };
 
+
         //Chart Works
         public ObservableCollection<ISeries> SeriesWorks { get; set; } = new ObservableCollection<ISeries>()
-  {
-        new PolarLineSeries<int>
         {
-            Values = new ObservableCollection<int>(),
-            LineSmoothness = 1,
-            GeometrySize= 0,
-            Fill = new SolidColorPaint(SKColors.Blue.WithAlpha(90)),
-            DataLabelsSize = 5,
+            new PolarLineSeries<int>
+            {
+                Values = new ObservableCollection<int>(),
+                LineSmoothness = 1,
+                GeometrySize= 0,
+                Fill = new SolidColorPaint(SKColors.Blue.WithAlpha(90)),
+                DataLabelsSize = 5,
             
             
-        },
+            },
         };
         public PolarAxis[] AngleAxes { get; set; } =
     {
@@ -153,26 +152,26 @@ namespace SpaceSRM.ViewModels
             ProgressBar = 0.1f;
             records = await recordConnection.GetRecords();
             ProgressBar = 0.2f;
-            foreach(Record record in records)
+            foreach (Record record in records)
             {
-                foreach(Work work in record.Works)
+                foreach (Work work in record.Works)
                 {
                     work.Record = new Record();
                     work.Record.DateEnd = record.DateEnd;
                     works.Add(work);
                 }
-                
+
             }
             ProgressBar = 0.3f;
 
-            
+
             List<DateTimePoint> datesRecords = new List<DateTimePoint>();
-            foreach(Record record in records)
+            foreach (Record record in records)
             {
-                DateTimePoint thisDate = datesRecords.Where(u => u.DateTime.Year == record.DateEnd.Year 
-                && u.DateTime.Month == record.DateEnd.Month 
+                DateTimePoint thisDate = datesRecords.Where(u => u.DateTime.Year == record.DateEnd.Year
+                && u.DateTime.Month == record.DateEnd.Month
                 && u.DateTime.Day == record.DateEnd.Day).FirstOrDefault();
-                if(thisDate != null)
+                if (thisDate != null)
                 {
                     thisDate.Value += record.Sum;
                 }
@@ -189,7 +188,7 @@ namespace SpaceSRM.ViewModels
             {
                 ((ObservableCollection<DateTimePoint>)SeriesRecord[0].Values).Add(point);
             }
-            
+
 
             ProgressBar = 1;
             VisableBar = false;
