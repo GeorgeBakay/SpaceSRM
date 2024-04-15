@@ -1,0 +1,246 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>SpaceSRM</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		
+		<!-- Display name -->
+		<ApplicationTitle>SpaceSRM</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.UBoxsrm</ApplicationId>
+		<ApplicationIdGuid>22c899e4-cb64-460e-b0e5-820f71a9fc4d</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+    <EnableXamlCompiler>true</EnableXamlCompiler>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PublishTrimmed>true</PublishTrimmed>
+</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#0a0a0a" BaseSize="10,10" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="336,336" Color="#0a0a0a" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\raw\ca.crt" />
+	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+	  <None Remove="Resources\Images\back.png" />
+	  <None Remove="Resources\Images\costs.svg" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\record.svg" />
+	  <None Remove="Resources\Images\report.svg" />
+	  <None Remove="Resources\Images\setting.svg" />
+	  <None Remove="Resources\Images\statistic.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
+
+	  <PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+	  <PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-beta.400" />
+	  <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	  <PackageReference Include="PureWeen.Maui.FixesAndWorkarounds" Version="1.4.9" />
+	  <PackageReference Include="System.Text.Json" Version="8.0.0-preview.7.23375.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="AppShellDesktop.xaml.cs">
+	    <DependentUpon>AppShellDesktop.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="AppShellMobile.xaml.cs">
+	    <DependentUpon>AppShellMobile.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Forms\DesktopSetting\AddServiceForm.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Forms\DesktopSetting\EditServicePage.xaml.cs">
+	    <DependentUpon>EditServicePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Calendar.xaml.cs">
+	    <DependentUpon>Calendar.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Forms\Mobile\EditServiceForm.xaml.cs">
+	    <DependentUpon>EditServiceForm.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Forms\Statistic\StatisticCosts.xaml.cs">
+	    <DependentUpon>StatisticCosts.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Update="Resources\Images\costs.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\costs2.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\record.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\record2.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\report.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\setting.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	  <MauiImage Update="Resources\Images\statistic.svg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiImage>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShellMobile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="CustomControls\CalendarView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Costs.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\AddClientForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\AddEmployerForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\AddRecordForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\AddServiceForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\AddSetServiceForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\EditClientPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\EditEmployerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\EditServicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\DesktopSetting\EditSetServicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\AddWorkForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\CostPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditClientForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditEmployerForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditPhoto.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditRecordForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditServiceForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditSetServiceForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\EditWorkForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\ShowClientPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\ShowEmployerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\ShowServicePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Mobile\ShowSetServivePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\StatisticClient.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\StatisticEmployer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\StatisticWorks.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\ViewClients.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\StatisticCosts.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\ViewEmployers.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Forms\Statistic\ViewRecords.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Records.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Calendar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Settings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Statistic.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI">
+      <Version>2.0.0-beta.710</Version>
+    </PackageReference>
+  </ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="NewFolder\" />
+	</ItemGroup>
+
+</Project>
