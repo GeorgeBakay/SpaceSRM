@@ -83,11 +83,11 @@ jobs:
       with:
         distribution: 'zulu'  # Use 'zulu' or 'temurin' as per preference
         java-version: '11'
+    - name: Install .NET workloads
+      run: dotnet workload install android
 
     # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
-
+    
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
