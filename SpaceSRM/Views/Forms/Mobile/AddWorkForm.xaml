@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.Mobile.AddWorkForm"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="AddWorkForm">
+    <ScrollView>
+        <VerticalStackLayout Margin="10,0" HorizontalOptions="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ImageButton
+                       Grid.Column="0"
+                    Margin="0,10" 
+                         BackgroundColor="Transparent" 
+                         Source="back.png" Clicked="OnBack"
+                         WidthRequest="30" 
+                         HeightRequest="30" 
+                         HorizontalOptions="Start">
+                </ImageButton>
+                <Label TextColor="#548AFE" Margin="0,10" FontSize="20" Text="Додати роботу" Grid.Column="1" HorizontalOptions="Center"/>
+            </Grid>
+            
+           
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="250"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"  Margin="0,10" FontSize="17" Text="Послуга"/>
+                    <Border 
+                        Grid.Column="1" 
+                        Margin="5"
+                        StrokeThickness="0"
+                        BackgroundColor="#4ED16B"
+                        StrokeShape="RoundRectangle 5,5,5,5"
+                        WidthRequest="45"
+                        HeightRequest="45">
+                        <Button Text="+" FontSize="20" Clicked="OnAddService" BackgroundColor="Transparent"></Button>
+                    </Border>
+                </Grid>
+                
+                <ActivityIndicator ZIndex="1" Color="#25B6BC" WidthRequest="80" Grid.Row="1" IsRunning="{Binding IsBusyService}"></ActivityIndicator>
+                <Border 
+                        Grid.Row="1"
+                        StrokeShape="RoundRectangle 15,15,15,15"
+                        Stroke="Transparent"
+                        Padding="5"
+                         Margin="5,0,5,5"
+                        BackgroundColor="#1a1919"
+                        >
+                    <ScrollView  Margin="10 ,0, 10, 0"  Grid.Row="1">
+
+                        <CollectionView 
+                            SelectionMode="Single" 
+                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                            Grid.Row="2" 
+                            SelectionChanged="SelectService_SelectionChanged"
+                            SelectedItem="{Binding SelectService}"
+                            ItemsSource="{Binding Services}"
+                            x:Name="SelectService">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                Margin="0,5"
+                                BackgroundColor="Transparent"
+                                Stroke="#548AFE"
+                                 StrokeShape="RoundRectangle 5"
+                                >
+                                        <Grid Margin="0,15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <!--<ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>-->
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Name}" Grid.Column="0"></Label>
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Type}" Grid.Column="1"></Label>
+                                            <!--<Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Price}" Grid.Column="2"></Label>
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Procent}" Grid.Column="3"></Label>-->
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroupList>
+                                                <VisualStateGroup Name="CommonStates">
+                                                    <VisualState Name="Normal" />
+                                                    <VisualState Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+
+                                                </VisualStateGroup>
+                                            </VisualStateGroupList>
+                                            
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+
+                        </CollectionView>
+                    </ScrollView>
+                </Border>
+
+
+                <BoxView Grid.Row="2" Color="#262626" WidthRequest="150" HeightRequest="10" CornerRadius="5"
+                 HorizontalOptions="Center" VerticalOptions="Center" />
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0"  Margin="0,10" FontSize="17" Text="Працівники"/>
+                    <Border 
+                        Grid.Column="1" 
+                        Margin="5"
+                        StrokeThickness="0"
+                        BackgroundColor="#4ED16B"
+                        StrokeShape="RoundRectangle 5,5,5,5"
+                        WidthRequest="45"
+                        HeightRequest="45">
+                        <Button Text="+" FontSize="20" Clicked="OnAddEmployer" BackgroundColor="Transparent"></Button>
+                    </Border>
+                </Grid>
+
+
+
+                <ActivityIndicator ZIndex="1" Color="#25B6BC" WidthRequest="80" Grid.Row="4" IsRunning="{Binding IsBusyEmployer}"></ActivityIndicator>
+                <Border 
+                        Grid.Row="4"
+                        StrokeShape="RoundRectangle 15,15,15,15"
+                        Stroke="Transparent"
+                        Padding="5"
+                         Margin="5,0,5,5"
+                        BackgroundColor="#1a1919"
+                        >
+                    <ScrollView Margin="10 ,0, 10, 0">
+
+                        <CollectionView
+                                SelectionMode="Multiple"   
+                                x:Name="SelectionEmployers" 
+                                Grid.Row="0" 
+                                SelectionChanged="SelectionEmployers_SelectionChanged"
+                                ItemsSource="{Binding Employers}"
+                                SelectedItems="{Binding SelectEmployers}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                Margin="0,5"
+                                BackgroundColor="Transparent"
+                                Stroke="#548AFE"
+                                 StrokeShape="RoundRectangle 5"
+                                >
+                                        <Grid Margin="0,15">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Name}" Grid.Column="0"></Label>
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding SurName}" Grid.Column="1"></Label>
+                                            <Label HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Phone}" Grid.Column="2"></Label>
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroupList>
+                                                <VisualStateGroup Name="CommonStates">
+                                                    <VisualState Name="Normal" />
+                                                    <VisualState Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                                
+                                            </VisualStateGroupList>
+                                            
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+
+                </Border>
+                
+
+            </Grid>
+            <Label  Margin="0,10" FontSize="17" Text="Ціна"/>
+            <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry Keyboard="Numeric" x:Name="Price" TextColor="Black" Placeholder="введіть ціну"/>
+            </Border>
+            <Label  Margin="0,10" FontSize="17" Text="Опис витрат(довільно)"/>
+            <Border HeightRequest="150"  Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Editor x:Name="DescriptionCost" TextColor="Black"  Text=" "></Editor>
+            </Border>
+            <Label  Margin="0,10" FontSize="17" Text="Витрати(довільно)"/>
+            <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry x:Name="PriceCost" Keyboard="Numeric" TextColor="Black" Text="0"/>
+            </Border>
+            
+            <Button   Margin="0,20" 
+                      BackgroundColor="#548AFE" 
+                      FontSize="17" 
+                      TextColor="Black"
+                      Padding="25,15"
+                      HorizontalOptions="Center" 
+                      Clicked="OnSubmitClicked" 
+                      Text="Додати роботу"/>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

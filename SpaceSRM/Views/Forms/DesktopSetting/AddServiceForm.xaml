@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.DesktopSetting.AddServiceForm"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="Додати послугу">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Style.Triggers>
+
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="PlaceholderColor" Value="Gray" />
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Margin="10,0" HorizontalOptions="Center">
+            <ImageButton Margin="0,10" BackgroundColor="Transparent" Source="back.png" Clicked="OnBack" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
+           
+            <Label Margin="0,10" FontSize="17"  Text="Назва послуги"/>
+            <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry  x:Name="Name" TextColor="Black" Placeholder="Введіть назву послуги, наприклад Полірування"/>
+            </Border>
+            <Label Margin="0,10" FontSize="17" Text="Тип послуги"/>
+            <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry  x:Name="Type" TextColor="Black" Placeholder="введіть тип"/>
+            </Border>
+
+            <Label Margin="0,10" FontSize="17" Text="Ціна"/>
+            <Border Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry x:Name="Price" TextColor="Black" Placeholder="введіть ціну"/>
+            </Border>
+
+            <Label Margin="0,10" FontSize="17" Text="Процент працівника"/>
+            <Border  Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry x:Name="Procent"  Placeholder="введіть процент"/>
+            </Border>
+            <Label HorizontalOptions="Center" x:Name="Result" Margin="0,10" FontSize="17" Text=""/>
+            <Button TextColor="White" Margin="0,20" BackgroundColor="#0E172A" FontSize="17" Padding="50,15" HorizontalOptions="Center" Clicked="OnSubmitClicked" Text="Додати послугу"/>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

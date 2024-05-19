@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Forms.DesktopSetting.AddRecordForm"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="AddRecordForm">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Style.Triggers>
+                
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="PlaceholderColor" Value="Gray" />
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout x:Name="myStackLayout" Margin="10,0" HorizontalOptions="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Margin="0,10" BackgroundColor="Transparent" Source="back.png" Clicked="OnBack" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
+                <Label VerticalTextAlignment="Center" FontSize="20" TextColor="#548AFE" HorizontalTextAlignment="Center" Grid.Column="1" Text="Додати запис"/>
+            </Grid>
+            
+            <Label Margin="0,10,0,0" FontSize="20" HorizontalOptions="Center"  Text="Клієнт"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Border
+                    Padding="5" 
+                    Grid.Column="0" 
+                    Grid.Row="0"
+                    StrokeThickness="1"
+                   
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Margin="5"
+                    >
+                    <SearchBar 
+                    x:Name="SearchClient"
+                    TextColor="Black"
+                    Placeholder="введіть номер клієнта"
+                    PlaceholderColor="Gray"
+                    TextChanged="OnChangeSeachClient"/>
+                </Border>
+                <Label  Margin="5,0,0,0" Grid.Row="1" FontSize="16"  Text="Вибраний клієнт"/>
+                <Border
+                    Grid.Row="2"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    Stroke="Transparent"
+                    Grid.ColumnSpan="2" 
+                    Padding="5"
+                    Margin="5,0,5,5"
+                    BackgroundColor="#1a1919"
+                >
+                    <Grid HeightRequest="40" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" Grid.Column="0" Text="{Binding SelectClient.Name}"/>
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1" Text="{Binding SelectClient.SurName}"/>
+                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding SelectClient.Phone}"/>
+
+                    </Grid>
+                </Border>
+                <Label  Margin="5,0,0,0" Grid.Row="3" FontSize="16"  Text="Список клієнтів"/>
+                <ActivityIndicator 
+                    ZIndex="1"
+                    Color="#25B6BC" WidthRequest="80"
+                    Grid.ColumnSpan="2" 
+                    Grid.Row="4"
+                    IsRunning="{Binding IsBusyClient}">
+                </ActivityIndicator>
+                <Border Grid.ColumnSpan="2"
+                        Grid.Row="4"
+                        StrokeShape="RoundRectangle 15,15,15,15"
+                        Stroke="Transparent"
+                        Padding="5"
+                         Margin="5,0,5,5"
+                        BackgroundColor="#1a1919"
+                        >
+                    
+                    <RefreshView  HorizontalOptions="Fill">
+
+                        <CollectionView
+                            RemainingItemsThreshold="5"
+                            SelectionMode="Single"
+                            x:Name="CheckClient"
+                            SelectionChanged="CheckClient_SelectionChanged"
+                            SelectedItem="{Binding SelectClient}"
+                            ItemsSource="{Binding Clients, Mode=TwoWay}"
+                            HeightRequest="300"
+                    >
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HeightRequest="40" Margin="0,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Text="{Binding Name}"/>
+                                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1" Text="{Binding SurName}"/>
+                                        <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="2" Text="{Binding Phone}"/>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal" />
+                                                <VisualState Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </RefreshView>
+                </Border>
+               
+                <Border Grid.Column="1" Grid.Row="0"
+                    Margin="5"
+                    StrokeThickness="0"
+                    Padding="0"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 5,5,5,5"
+                    WidthRequest="45"
+                    HeightRequest="45">
+                    <Button Text="+" FontSize="30" Padding="0" Clicked="OnAddClient" BackgroundColor="Transparent"></Button>
+                </Border>
+            </Grid>
+            
+            <Label  Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Авто"/>
+            <Label TextColor="White" Margin="0,10" FontSize="17" Text="Номер знак ТЗ"/>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+
+                <Entry  Completed="OnNumberOfCarCompleted" AutomationId="0"  ReturnType="Next" TextColor="Black" BackgroundColor="White" IsSpellCheckEnabled="False"  Text="{Binding AddRecord.NumberOfCar}"  Placeholder="введіть номер машини">
+                    
+                </Entry>
+
+            </Border>
+            <Label Margin="0,10" FontSize="17" Text="Марка | Модель"/>
+            <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry  Completed="OnNumberOfCarCompleted" AutomationId="1" ReturnType="Next" TextColor="Black"  IsSpellCheckEnabled="False" Text="{Binding AddRecord.Brand}" Placeholder="введіть марку машини"/>
+            </Border>
+                   
+            <Label Margin="0,10" FontSize="17" Text="Розмір кузова"/>
+            <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry  Completed="OnNumberOfCarCompleted" ReturnType="Next" TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodySize}" Placeholder="введіть розмір кузову"/>
+            </Border>
+
+            <Label Margin="0,10" FontSize="17" Text="Тип кузова"/>
+            <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry  Completed="OnNumberOfCarCompleted" TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.BodyType}" Placeholder="введіть тип кузову"/>
+            </Border>
+            <Label Margin="0,10" FontSize="17" Text="Кільксть пального"/>
+            <Border  Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry TextColor="Black" IsSpellCheckEnabled="False" Text="{Binding AddRecord.GasCount}" Placeholder="введіть тип кузову"/>
+            </Border>
+
+            <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Перелік робіт"/>
+            <CollectionView
+                    SelectionMode="Single"
+                    x:Name="CollectionWorks"
+                    SelectionChanged="WorksSelectionChanged"
+                    ItemsSource="{Binding Works}"
+                RemainingItemsThreshold="5"
+                   
+                    >
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5,5" Padding="10,5" StrokeThickness="1" Stroke="Transparent" BackgroundColor="#1a1919" StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid Padding="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Grid  Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label VerticalTextAlignment="Center" Text="{Binding Service.Name}" Grid.Column="0"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                    <Label VerticalTextAlignment="Center" Text="{Binding Service.Type}" Grid.Column="1"  HorizontalTextAlignment="Center" FontSize="12"></Label>
+                                </Grid>
+
+
+                                <VerticalStackLayout  Grid.Column="1">
+                                    <CollectionView
+                                        Scale="0.95"
+                                        ItemsSource="{Binding Employers}">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid VerticalOptions="Center" HeightRequest="70">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="25"/>
+                                                        <RowDefinition Height="25"/>
+
+                                                    </Grid.RowDefinitions>
+                                                    <Label LineBreakMode="NoWrap" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" Text="{Binding Name}" Grid.Row="0"></Label>
+                                                    <Label LineBreakMode="NoWrap" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" Text="{Binding SurName}" Grid.Row="1"></Label>
+
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+
+                                <Border VerticalOptions="Center" Grid.Column="2" Padding="10,5" StrokeThickness="1" Stroke="#548AFE" BackgroundColor="Transparent" StrokeShape="RoundRectangle 10,10,10,10">
+                                    <Label  VerticalTextAlignment="Center" HorizontalOptions="Center"  Text="{Binding Price , Mode=TwoWay}"/>
+                                </Border>
+
+
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Border     
+                    Margin="20"
+                    StrokeThickness="0"
+                    Padding="0"
+                    
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 30,30,30,30"
+                    WidthRequest="60"
+                    HeightRequest="60">
+                <Button 
+                    Clicked="OnAddWork" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="+"
+                    Padding="0"
+                    TextColor="White"
+                    FontSize="35"
+                    BackgroundColor="Transparent">
+                </Button>
+            </Border>
+
+            <Label Margin="0,20,0,0" FontSize="17" HorizontalOptions="Center"  Text="Фото"/>
+            
+            <Label Margin="0,10" FontSize="17" Text="Фото до"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border     
+                    Margin="20"
+                    StrokeThickness="2"
+                    Grid.Column="1"
+                    Stroke="Gray"
+                    BackgroundColor="Gray"
+                    StrokeShape="RoundRectangle 30,30,30,15"
+                    
+                    HeightRequest="60">
+                    <Button Clicked="PhotoBeforeFromGallery" TextColor="White" Text="Галерея" FontSize="15" BackgroundColor="Transparent">
+                    </Button>
+                </Border>
+                <Border     
+                    Margin="20"
+                    StrokeThickness="2"
+                    Grid.Column="3"
+                    Stroke="Gray"
+                    BackgroundColor="Gray"
+                    StrokeShape="RoundRectangle 30,30,15,30"
+                    HeightRequest="60">
+                    <Button Clicked="PhotoBeforeFromCamera" TextColor="White" Text="Фото" FontSize="15" BackgroundColor="Transparent"></Button>
+
+                </Border>
+            </Grid>
+            <CollectionView 
+                            x:Name="PhotosBeforeCollection"
+                            HorizontalOptions="Center"
+                            ItemsLayout="VerticalGrid, 3"
+                            SelectionChanged="BeforePhotoSelectionChanged"
+                            SelectionMode="Single"
+                            ItemsSource="{Binding PhotoBefore, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectClient}"
+                RemainingItemsThreshold="5"
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                           
+                            <Image 
+                            Margin="10"
+                            HeightRequest="150"
+                            Source="{Binding ImageC.Source, Mode=TwoWay}" >
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Image>
+                            
+                            
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Margin="0,10" FontSize="17" Text="Фото після"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border     
+                     Margin="20"
+                    StrokeThickness="2"
+                    Grid.Column="1"
+                     Stroke="Gray"
+                    BackgroundColor="Gray"
+                    StrokeShape="RoundRectangle 30,30,30,15"
+                    
+                    HeightRequest="60">
+                    <Button Clicked="PhotoAfterFromGallery" TextColor="White" Text="Галерея" FontSize="15" BackgroundColor="Transparent">
+                    </Button>
+                </Border>
+                <Border     
+                    Margin="20"
+                    StrokeThickness="2"
+                    Grid.Column="3"
+                     Stroke="Gray"
+                    BackgroundColor="Gray"
+                    StrokeShape="RoundRectangle 30,30,15,30"
+                    
+                    HeightRequest="60">
+                    <Button Clicked="PhotoAfterFromCamera" TextColor="White" Text="Фото" FontSize="15" BackgroundColor="Transparent">
+                    </Button>
+                </Border>
+            </Grid>
+            <CollectionView 
+                SelectionChanged="AfterPhotoSelectionChanged"
+                HorizontalOptions="Center"
+                SelectionMode="Single"
+                ItemsLayout="VerticalGrid, 3"
+                ItemsSource="{Binding PhotoAfter}"
+                RemainingItemsThreshold="5"
+>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Image 
+                            Margin="5"
+                            HeightRequest="150"
+                            Source="{Binding ImageC.Source, Mode=TwoWay}"
+                            
+                            >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal" />
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Image>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Дати"/>
+            <Label Margin="0,10" FontSize="17" Text="Дата початку"/>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker DateSelected="DateStartDateSelected"  x:Name="DateStart" Grid.Column="0" Format="D" TextColor="Black" >
+                    </DatePicker>
+                    <TimePicker PropertyChanged="TimeStartPropertyChanged" Format="t" x:Name="TimeStart" Grid.Column="1" TextColor="Black">
+
+                    </TimePicker>
+                </Grid>
+            </Border>
+            <Label Margin="0,10" FontSize="17" Text="Дата кінця"/>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker DateSelected="DateEndDateSelected" x:Name="DateEnd" Grid.Column="0" Format="D" TextColor="Black" >
+                    </DatePicker>
+                    <TimePicker PropertyChanged="TimeEndPropertyChanged" Format="t" x:Name="TimeEnd" Grid.Column="1"  TextColor="Black">
+
+                    </TimePicker>
+                </Grid>
+               
+            </Border>
+
+            <Label Margin="0,20,0,10" FontSize="20" HorizontalOptions="Center"  Text="Статус"/>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Picker TextColor="Black" x:Name="StatusPicker" PropertyChanged="StatusPickerPropertyChanged">
+                    <Picker.Items>
+                        <x:String>Запис</x:String>
+                        <x:String>В роботі</x:String>
+                        <x:String>Виконано</x:String>
+                        <x:String>Відміна</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
+
+            <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Розсилка"/>
+            <Label Margin="0,10" FontSize="17" Text="Надсилати повідомлення про зміну стану запису"/>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Switch IsToggled="{Binding AddRecord.SendMessage, Mode=TwoWay}" />
+            </Border>
+            
+
+
+            <Label Margin="0,20,0,0" FontSize="20" HorizontalOptions="Center"  Text="Ціна"/>
+            
+      
+            <Label Margin="0,10" FontSize="17" Text="Знижка"/>
+            <Label TextColor="#FA6D6D" x:Name="DiscountError"></Label>
+            <Border Margin="5,0" Padding="10,5" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10,10,10,10">
+                <Entry PropertyChanged="DiscountPropertyChanged" x:Name="DiscountText" Text="0" TextColor="Black"  Placeholder="введіть знижку"/>
+                
+            </Border>
+            
+
+
+            <Label Margin="0,10" FontSize="17" Text="Ціна"/>
+            <Label Margin="10,0" FontSize="20" Text="{Binding Sum}"/>
+
+            <ActivityIndicator x:Name="LoadingAdd" Color="#4ED16B" IsRunning="False"></ActivityIndicator>
+            <Button TextColor="White" Clicked="SubmitClicked" Margin="0,10" BackgroundColor="#0E172A" FontSize="17" Padding="35,15" HorizontalOptions="Center"  Text="Додати запис"/>
+
+            <Label TextColor="#4ED16B" HorizontalOptions="Center" x:Name="Result" Margin="0,10" FontSize="13" Text=""/>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

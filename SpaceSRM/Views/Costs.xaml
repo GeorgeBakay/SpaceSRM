@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpaceSRM.Views.Costs"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+            
+             Title="Costs">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White"></Setter>
+            <Style.Triggers>
+
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="PlaceholderColor" Value="Gray" />
+                </Trigger>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                    <Setter Property="BackgroundColor" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </ContentPage.Resources>
+    <Grid VerticalOptions="EndAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+        <ActivityIndicator 
+                Color="#25B6BC" WidthRequest="80"
+                Grid.Row="0"
+                IsRunning="{Binding IsBusy}">
+
+        </ActivityIndicator>
+        <ScrollView Margin="0 ,70, 0, 0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill"  Grid.Row="0">
+
+            <CollectionView 
+                            Margin="5"
+                            ItemsSource="{Binding Costs}"
+                            SelectionMode="Single"    
+                            SelectedItem="{Binding SelectedCost}"
+                            SelectionChanged="CollectionView_SelectionChanged"
+                            
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Padding="5, 15"
+                                Margin="0,5"
+                                BackgroundColor="Transparent"
+                                Stroke="#548AFE"
+                                 StrokeShape="RoundRectangle 5"
+                                >
+                            <Grid Margin="0,15">
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Name}" Grid.Column="0"></Label>
+                                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Description}" Grid.Column="1"></Label>
+                                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Date,StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="2"></Label>
+                                <Label VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="13" Text="{Binding Price}" Grid.Column="3"></Label>
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal" />
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="#4ED16B" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                                
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </ScrollView>
+        <Border     Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    Margin="10"
+                    StrokeThickness="0"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 40,40,40,40"
+                    WidthRequest="60"
+                     x:Name="ShowButton"
+                    HeightRequest="60">
+            <ImageButton
+                x:Name="ShowButtonImage"
+                    BackgroundColor="Transparent"
+                    Source="back.png"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    Rotation="-90"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                   
+                    Clicked="ShowButton_Clicked"/>
+        </Border>
+        <Border
+                Opacity="0.2"
+                Grid.Row="0"
+                VerticalOptions="Start"
+                x:Name="DataForm"
+                TranslationY="-440"
+                Margin="10,0,10,10" 
+                Padding="15"
+                HorizontalOptions="Fill" 
+                HeightRequest="450"
+                BackgroundColor="#1a1919"
+                StrokeShape="RoundRectangle 15,15,15,15"
+                StrokeThickness="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+
+                    </Grid.RowDefinitions>
+                    <Label VerticalTextAlignment="End" Grid.Row="0" TextColor="#548AFE" Text="Назва" FontSize="16"></Label>
+                    <Border Grid.Row="1"
+                            BackgroundColor="White"
+                            Padding="15,0"
+                            Stroke="#1a1919"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            >
+                        <Entry  x:Name="Name" TextColor="Black"  Text="{Binding SelectedCost.Name ,Mode=TwoWay}"></Entry>
+                    </Border>
+
+                    <Label VerticalTextAlignment="End" Grid.Row="2" TextColor="#548AFE" Text="Опис" FontSize="16"></Label>
+                    <Border Grid.Row="3"
+                            BackgroundColor="White"
+                            Padding="15,0"
+                            Stroke="#1a1919"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            >
+                        <Editor x:Name="Description" TextColor="Black"  Text="{Binding SelectedCost.Description ,Mode=TwoWay}"></Editor>
+                    </Border>
+                    <Label VerticalTextAlignment="End"  Grid.Row="4" TextColor="#548AFE" Text="Дата" FontSize="16"></Label>
+                    <Border Grid.Row="5"
+                            BackgroundColor="White"
+                            Padding="15,0"
+                            Stroke="#1a1919"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            >
+                        <DatePicker x:Name="Date" TextColor="Black" Date="{Binding SelectedCost.Date ,Mode=TwoWay}" Format="d"></DatePicker>
+                    </Border>
+                    <Label VerticalTextAlignment="End"  Grid.Row="6" TextColor="#548AFE" Text="Ціна" FontSize="16"></Label>
+                    <Border Grid.Row="7"
+                            BackgroundColor="White"
+                            Padding="15,0"
+                            Stroke="#1a1919"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            >
+                        <Entry x:Name="Price" Keyboard="Numeric" TextColor="Black"  Text="{Binding SelectedCost.Price, Mode=TwoWay}"></Entry>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border 
+                    Grid.Column="0" 
+                    StrokeThickness="1"
+                    Stroke="#FA6D6D"
+                    BackgroundColor="#FA6D6D"
+                    StrokeShape="RoundRectangle 10,10,10,10">
+                        <Button
+                        TextColor="White"
+                        FontSize="10"
+                        Text="Видалити"
+                        BackgroundColor="Transparent"
+                        Clicked="Delete_Clicked"
+                        >
+
+                        </Button>
+                    </Border>
+                    <Border 
+                    Grid.Column="1" 
+                    StrokeThickness="1"
+                    Stroke="#CFD14E"
+                    BackgroundColor="#CFD14E"
+                    StrokeShape="RoundRectangle 10,10,10,10">
+                        <Button
+                        TextColor="White"
+                        FontSize="10"
+                        Text="Редагувати"
+                        BackgroundColor="Transparent"
+                        Clicked="Edit_Clicked"
+                        >
+
+                        </Button>
+                    </Border>
+                    <Border 
+                    Grid.Column="2" 
+                    StrokeThickness="1"
+                    Stroke="#4ED16B"
+                    BackgroundColor="#4ED16B"
+                    StrokeShape="RoundRectangle 10,10,10,10">
+                        <Button
+                        TextColor="White"
+                        FontSize="10"
+                        Text="Додати"
+                        BackgroundColor="Transparent"
+                        Clicked="Add_Clicked"
+                        >
+
+                        </Button>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+    
+</ContentPage>

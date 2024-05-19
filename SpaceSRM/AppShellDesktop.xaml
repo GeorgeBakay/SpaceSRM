@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<simpleShell:SimpleShell
+    x:Class="SpaceSRM.AppShellDesktop"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:simpleShell="clr-namespace:SimpleToolkit.SimpleShell;assembly=SimpleToolkit.SimpleShell"
+    xmlns:pages="clr-namespace:SpaceSRM"
+    x:Name="thisShell">
+
+    <ShellContent
+        Title="Icons"
+        
+        ContentTemplate="{DataTemplate pages:Views.Costs}"
+        Route="IconPage"/>
+
+    <ShellContent
+        Title="Buttons"
+        
+        ContentTemplate="{DataTemplate pages:Views.Costs}"
+        Route="ContentButtonPage"/>
+
+    <ShellContent
+        Title="Popovers"
+      
+        ContentTemplate="{DataTemplate pages:Views.Costs}"
+        Route="PopoverPage"/>
+
+    <simpleShell:SimpleShell.Content>
+        <Grid
+            RowDefinitions="50, *, 50">
+            
+            <Label
+                Margin="20,5"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                Text="{Binding CurrentShellContent.Title, Source={x:Reference thisShell}}"
+                FontAttributes="Bold" FontSize="18"/>
+            <simpleShell:SimpleNavigationHost
+                Grid.Row="1"/>
+            <HorizontalStackLayout
+                x:Name="tabBar"
+                Grid.Row="2"
+                Margin="20,5"
+                HorizontalOptions="Center" Spacing="10"
+                BindableLayout.ItemsSource="{Binding ShellContents, Source={x:Reference thisShell}}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate
+                        x:DataType="BaseShellItem">
+                        <Button
+                            Clicked="TabButtonClicked"
+                            Background="DarkOrange"
+                            Text="{Binding Title}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </HorizontalStackLayout>
+        </Grid>
+    </simpleShell:SimpleShell.Content>
+</simpleShell:SimpleShell>-->
+
+
+
+<Shell
+    x:Class="SpaceSRM.AppShellDesktop"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SpaceSRM"
+    FlyoutBehavior="Locked"
+    
+   
+    Shell.NavBarIsVisible="False"
+    FlyoutWidth="200"
+    
+
+    
+    >
+
+    <Shell.FlyoutHeader>
+        
+        <Image Source="logo.png"></Image>
+        
+    </Shell.FlyoutHeader>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid HorizontalOptions="Center" WidthRequest="200" ColumnSpacing="10">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="15"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding Icon}" Grid.Column="0" HeightRequest="18" WidthRequest="18" />
+                <Label FontSize="17" VerticalOptions="Center" Grid.Column="1" Text="{Binding Title}" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Icon="record.png" Title="Записи" >
+        <ShellContent  ContentTemplate="{DataTemplate local:Views.Records}"/>
+    </FlyoutItem>
+    <FlyoutItem Icon="statistic.png" Title="Статистика" >
+        <ShellContent ContentTemplate="{DataTemplate local:Views.Statistic}" />
+    </FlyoutItem>
+    <FlyoutItem Icon="report.png" Title="Звіт" >
+        <ShellContent  ContentTemplate="{DataTemplate local:Views.Calendar}" />
+    </FlyoutItem>
+    <FlyoutItem Icon="costs.png" Title="Витрати" >
+        <ShellContent ContentTemplate="{DataTemplate local:Views.Costs}" />
+    </FlyoutItem>
+    <FlyoutItem Icon="setting.png" Title="Налаштування" >
+        <ShellContent ContentTemplate="{DataTemplate local:Views.Settings}" />
+    </FlyoutItem>
+
+    
+
+
+
+</Shell>
+
+    
